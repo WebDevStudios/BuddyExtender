@@ -47,6 +47,7 @@
  * @return void
  */
 function bp_extender_autoload_classes( $class_name ) {
+
 	if ( 0 !== strpos( $class_name, 'BPExtender_' ) ) {
 		return;
 	}
@@ -147,6 +148,7 @@ class BP_Extender {
 	public function plugin_classes() {
 		// Attach other plugin classes to the base plugin class.
 		// $this->plugin_class = new WDS_Plugin_Class( $this );
+		//$this->bpextadmin = new BPExtender_Admin();
 	} // END OF PLUGIN CLASSES FUNCTION
 
 	/**
@@ -158,6 +160,7 @@ class BP_Extender {
 	public function hooks() {
 		add_action( 'init', array( $this, 'init' ) );
 		add_action( 'init', array( $this, 'load_libs' ) );
+		$this->includes();
 	}
 
 	/**
@@ -201,12 +204,29 @@ class BP_Extender {
 	public function load_libs() {
 
 		// Load cmb2.
-		if ( file_exists( __DIR__ . '/lib/cmb2/init.php' ) ) {
-			require_once  __DIR__ . '/lib/cmb2/init.php';
-		} elseif ( file_exists( __DIR__ . '/lib/CMB2/init.php' ) ) {
-			require_once  __DIR__ . '/lib/CMB2/init.php';
+		if ( file_exists( __DIR__ . '/vendor/cmb2/init.php' ) ) {
+			require_once  __DIR__ . '/vendor/cmb2/init.php';
+		} elseif ( file_exists( __DIR__ . '/vendor/CMB2/init.php' ) ) {
+			require_once  __DIR__ . '/vendor/CMB2/init.php';
 		}
 
+		if ( file_exists( __DIR__ . '/vendor/ad-sidebar.php' ) ) {
+			require_once  __DIR__ . '/vendor/ad-sidebar.php';
+		}
+
+	}
+
+	/**
+	 * Load includes
+	 *
+	 * @since  1.0.0
+	 * @return void
+	 */
+	public function includes() {
+
+		if ( file_exists( __DIR__ . '/classes/class-admin.php' ) ) {
+			require_once  __DIR__ . '/classes/class-admin.php';
+		}
 	}
 
 	/**
@@ -255,6 +275,9 @@ class BP_Extender {
 		// Do checks for required classes / functions
 		// function_exists('') & class_exists('').
 		// We have met all requirements.
+		if ( ! class_exists('BuddyPress') ) {
+			return false;
+		}
 		return true;
 	}
 
@@ -266,7 +289,7 @@ class BP_Extender {
 	 */
 	public function requirements_not_met_notice() {
 		// Output our error.
-		$error_text = sprintf( __( 'BuddyPress is missing requirements and has been <a href="%s">deactivated</a>. Please make sure all requirements are available.', 'bpextender' ), admin_url( 'plugins.php' ) );
+		$error_text = sprintf( __( 'BuddyExtender is missing requirements and has been <a href="%s">deactivated</a>. Please make sure BuddyPres is installed and activated.', 'bpextender' ), admin_url( 'plugins.php' ) );
 
 		echo '<div id="message" class="error">';
 		echo '<p>' . esc_html( $error_text ) . '</p>';
@@ -352,3 +375,125 @@ add_action( 'plugins_loaded', array( bpextender(), 'hooks' ) );
 
 register_activation_hook( __FILE__, array( bpextender(), '_activate' ) );
 register_deactivation_hook( __FILE__, array( bpextender(), '_deactivate' ) );
+
+/**
+ * bpext_run_extended_settings loads
+ *
+ * BP defines hooked to plugins loaded before BP
+ *
+ * @return void
+ */
+function bpext_run_extended_settings() {
+
+	$options = get_option('bpext_options');
+
+	foreach( $options as $key => $value ) {
+		switch ( $key ) {
+			case 'avatar_thumb_size_select' :
+				if( !defined('BP_AVATAR_THUMB_WIDTH') )
+					define ( 'BP_AVATAR_THUMB_WIDTH', (int) $options[$key] );
+				if( !defined('BP_AVATAR_THUMB_HEIGHT') )
+					define ( 'BP_AVATAR_THUMB_HEIGHT', (int) $options[$key] );
+			break;
+			case 'avatar_full_size_select' :
+				if( !defined('BP_AVATAR_FULL_WIDTH') )
+					define ( 'BP_AVATAR_FULL_WIDTH', (int) $options[$key] );
+				if( !defined('BP_AVATAR_FULL_HEIGHT') )
+					define ( 'BP_AVATAR_FULL_HEIGHT', (int) $options[$key] );
+			break;
+			case 'avatar_max_size_select' :
+				if( !defined('BP_AVATAR_ORIGINAL_MAX_WIDTH') )
+					define ( 'BP_AVATAR_ORIGINAL_MAX_WIDTH', (int) $options[$key] );
+			break;
+			case 'avatar_default_image' :
+				if( !defined('BP_AVATAR_DEFAULT') )
+					define ( 'BP_AVATAR_DEFAULT', $options[$key] );
+				if( !defined('BP_AVATAR_DEFAULT_THUMB') )
+					define ( 'BP_AVATAR_DEFAULT_THUMB', $options[$key] );
+			break;
+			// advanced options
+			case 'root_profiles_checkbox' :
+				if( 'on' === $options[$key] && !defined('BP_ENABLE_ROOT_PROFILES') )
+					define ( 'BP_ENABLE_ROOT_PROFILES', true );
+			break;
+			case 'cover_image_checkbox' :
+				if( 'on' === $options[$key] && !defined('BP_DTHEME_DISABLE_CUSTOM_HEADER') )
+					define ( 'BP_DTHEME_DISABLE_CUSTOM_HEADER', true );
+			break;
+			case 'group_auto_join_checkbox' :
+				if( 'on' === $options[$key] && !defined('BP_DISABLE_AUTO_GROUP_JOIN') )
+					define ( 'BP_DISABLE_AUTO_GROUP_JOIN', true );
+			break;
+			case 'ldap_username_checkbox' :
+				if( 'on' === $options[$key] && !defined('BP_ENABLE_USERNAME_COMPATIBILITY_MODE') )
+					define ( 'BP_ENABLE_USERNAME_COMPATIBILITY_MODE', true );
+			break;
+			case 'wysiwyg_editor_checkbox' :
+				if( 'on' === $options[$key] && !defined('NO_MEDIA_POST_FORM') )
+					define ( 'NO_MEDIA_POST_FORM', true );
+			break;
+			case 'all_autocomplete_checkbox' :
+				if( 'on' === $options[$key] && !defined('BP_MESSAGES_AUTOCOMPLETE_ALL') )
+					define ( 'BP_MESSAGES_AUTOCOMPLETE_ALL', true );
+			break;
+			case 'depricated_code_checkbox' :
+				if( 'on' === $options[$key] && !defined('BP_IGNORE_DEPRECATED') )
+					define ( 'BP_IGNORE_DEPRECATED', true );
+			break;
+			// multisite options
+			case 'enable_multiblog_checkbox' :
+				if( 'on' === $options[$key] && !defined('BP_ENABLE_MULTIBLOG') )
+					define ( 'BP_ENABLE_MULTIBLOG', true );
+			break;
+			case 'root_blog_select' :
+				if( 'on' === $options[$key] && !defined('BP_ROOT_BLOG') )
+					define ( 'BP_ROOT_BLOG', (int) $options[$key] );
+			break;
+		}
+	}
+
+}
+add_action( 'plugins_loaded', 'bpext_run_extended_settings' );
+
+/**
+ * bpext_run_bp_included_settings loads
+ *
+ * BP filter/action hooked to bp include
+ *
+ * @return void
+ */
+function bpext_run_bp_included_settings() {
+
+	$options = get_option('bpext_options');
+
+	foreach( $options as $key => $value ) {
+		switch ( $key ) {
+			case 'profile_autolink_checkbox' :
+				if( 'on' === $options[$key] )
+					add_action( 'bp_init', 'bpext_remove_xprofile_links' );
+			break;
+			case 'user_mentions_checkbox' :
+				if( 'on' === $options[$key] )
+					add_action( 'bp_init', 'bpext_remove_user_mentions' );
+			break;
+		}
+	}
+
+}
+add_action( 'bp_include', 'bpext_run_bp_included_settings' );
+
+/**
+ * bpext_remove_xprofile_links
+ * @return void
+ */
+function bpext_remove_xprofile_links() {
+	remove_filter( 'bp_get_the_profile_field_value', 'xprofile_filter_link_profile_data', 9, 2 );
+}
+
+/**
+ * bpext_remove_user_mentions
+ * @return void
+ */
+function bpext_remove_user_mentions() {
+	add_filter('bp_activity_do_mentions', '__return_false');
+}
