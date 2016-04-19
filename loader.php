@@ -2,10 +2,10 @@
 /**
  * BuddyExtender Loader
  *
- * @package WDSProductFramework
+ * @package BuddyExtender
  * @subpackage Loader
  * @author WebDevStudios
- * @since 0.1.0
+ * @since 1.0.0
  */
 
 /**
@@ -42,7 +42,7 @@
 /**
  * Autoloads files with classes when needed
  *
- * @since  0.1.0
+ * @since  1.0.0
  * @param  string $class_name Name of the class being requested.
  * @return void
  */
@@ -63,7 +63,7 @@ spl_autoload_register( 'bp_extender_autoload_classes' );
 /**
  * Main initiation class
  *
- * @since  0.1.0
+ * @since  1.0.0
  * @var  string $version  Plugin version
  * @var  string $basename Plugin basename
  * @var  string $url	  Plugin URL
@@ -75,7 +75,7 @@ class BP_Extender {
 	 * Current version
 	 *
 	 * @var  string
-	 * @since  0.1.0
+	 * @since  1.0.0
 	 */
 	const VERSION = '1.0.0';
 
@@ -83,7 +83,7 @@ class BP_Extender {
 	 * URL of plugin directory
 	 *
 	 * @var string
-	 * @since  0.1.0
+	 * @since  1.0.0
 	 */
 	protected $url = '';
 
@@ -91,7 +91,7 @@ class BP_Extender {
 	 * Path of plugin directory
 	 *
 	 * @var string
-	 * @since  0.1.0
+	 * @since  1.0.0
 	 */
 	protected $path = '';
 
@@ -99,23 +99,23 @@ class BP_Extender {
 	 * Plugin basename
 	 *
 	 * @var string
-	 * @since  0.1.0
+	 * @since  1.0.0
 	 */
 	protected $basename = '';
 
 	/**
 	 * Singleton instance of plugin
 	 *
-	 * @var WDS_Product_Plugin_Framework
-	 * @since  0.1.0
+	 * @var BP_Extender
+	 * @since  1.0.0
 	 */
 	protected static $single_instance = null;
 
 	/**
 	 * Creates or returns an instance of this class.
 	 *
-	 * @since  0.1.0
-	 * @return WDS_Product_Plugin_Framework A single instance of this class.
+	 * @since  1.0.0
+	 * @return BP_Extender A single instance of this class.
 	 */
 	public static function get_instance() {
 		if ( null === self::$single_instance ) {
@@ -128,7 +128,7 @@ class BP_Extender {
 	/**
 	 * Sets up our plugin
 	 *
-	 * @since  0.1.0
+	 * @since  1.0.0
 	 */
 	protected function __construct() {
 		$this->basename = plugin_basename( __FILE__ );
@@ -141,7 +141,7 @@ class BP_Extender {
 	/**
 	 * Attach other plugin classes to the base plugin class.
 	 *
-	 * @since  0.1.0
+	 * @since  1.0.0
 	 * @return void
 	 */
 	public function plugin_classes() {
@@ -152,7 +152,7 @@ class BP_Extender {
 	/**
 	 * Add hooks and filters
 	 *
-	 * @since  0.1.0
+	 * @since  1.0.0
 	 * @return void
 	 */
 	public function hooks() {
@@ -163,7 +163,7 @@ class BP_Extender {
 	/**
 	 * Activate the plugin
 	 *
-	 * @since  0.1.0
+	 * @since  1.0.0
 	 * @return void
 	 */
 	function _activate() {
@@ -175,7 +175,7 @@ class BP_Extender {
 	 * Deactivate the plugin
 	 * Uninstall routines should be in uninstall.php
 	 *
-	 * @since  0.1.0
+	 * @since  1.0.0
 	 * @return void
 	 */
 	function _deactivate() {}
@@ -183,19 +183,19 @@ class BP_Extender {
 	/**
 	 * Init hooks
 	 *
-	 * @since  0.1.0
+	 * @since  1.0.0
 	 * @return void
 	 */
 	public function init() {
 		if ( $this->check_requirements() ) {
-			load_plugin_textdomain( 'wds-product-plugin-framework {{change}}', false, dirname( $this->basename ) . '/languages/' );
+			load_plugin_textdomain( 'bpextender', false, dirname( $this->basename ) . '/languages/' );
 		}
 	}
 
 	/**
 	 * Load libraries
 	 *
-	 * @since  0.1.0
+	 * @since  1.0.0
 	 * @return void
 	 */
 	public function load_libs() {
@@ -213,7 +213,7 @@ class BP_Extender {
 	 * Check if the plugin meets requirements and
 	 * disable it if they are not present.
 	 *
-	 * @since  0.1.0
+	 * @since  1.0.0
 	 * @return boolean result of meets_requirements
 	 */
 	public function check_requirements() {
@@ -234,7 +234,7 @@ class BP_Extender {
 	/**
 	 * Deactivates this plugin, hook this function on admin_init.
 	 *
-	 * @since  0.1.0
+	 * @since  1.0.0
 	 * @return void
 	 */
 	public function deactivate_me() {
@@ -248,7 +248,7 @@ class BP_Extender {
 	/**
 	 * Check that all plugin requirements are met
 	 *
-	 * @since  0.1.0
+	 * @since  1.0.0
 	 * @return boolean True if requirements are met.
 	 */
 	public static function meets_requirements() {
@@ -261,12 +261,12 @@ class BP_Extender {
 	/**
 	 * Adds a notice to the dashboard if the plugin requirements are not met
 	 *
-	 * @since  0.1.0
+	 * @since  1.0.0
 	 * @return void
 	 */
 	public function requirements_not_met_notice() {
 		// Output our error.
-		$error_text = sprintf( __( 'WDS Product Plugin Framework is missing requirements and has been <a href="%s">deactivated</a>. Please make sure all requirements are available.', 'wds-product-plugin-framework' ), admin_url( 'plugins.php' ) );
+		$error_text = sprintf( __( 'BuddyPress is missing requirements and has been <a href="%s">deactivated</a>. Please make sure all requirements are available.', 'bpextender' ), admin_url( 'plugins.php' ) );
 
 		echo '<div id="message" class="error">';
 		echo '<p>' . esc_html( $error_text ) . '</p>';
@@ -276,7 +276,7 @@ class BP_Extender {
 	/**
 	 * Magic getter for our object.
 	 *
-	 * @since  0.1.0
+	 * @since  1.0.0
 	 * @param string $field Field to get.
 	 * @throws Exception Throws an exception if the field is invalid.
 	 * @return mixed
@@ -297,7 +297,7 @@ class BP_Extender {
 	/**
 	 * Include a file from the includes directory
 	 *
-	 * @since  0.1.0
+	 * @since  1.0.0
 	 * @param  string $filename Name of the file to be included.
 	 * @return bool   Result of include call.
 	 */
@@ -312,7 +312,7 @@ class BP_Extender {
 	/**
 	 * This plugin's directory
 	 *
-	 * @since  0.1.0
+	 * @since  1.0.0
 	 * @param  string $path (optional) appended path.
 	 * @return string	   Directory and path
 	 */
@@ -325,7 +325,7 @@ class BP_Extender {
 	/**
 	 * This plugin's url
 	 *
-	 * @since  0.1.0
+	 * @since  1.0.0
 	 * @param  string $path (optional) appended path.
 	 * @return string	   URL and path
 	 */
@@ -340,15 +340,15 @@ class BP_Extender {
  * Grab the BP_Extender object and return it.
  * Wrapper for BP_Extender::get_instance()
  *
- * @since  0.1.0
+ * @since  1.0.0
  * @return BP_Extender Singleton instance of plugin class.
  */
-function bp_extender() {
+function bpextender() {
 	return BP_Extender::get_instance();
 }
 
 // Kick it off.
-add_action( 'plugins_loaded', array( bp_extender(), 'hooks' ) );
+add_action( 'plugins_loaded', array( bpextender(), 'hooks' ) );
 
-register_activation_hook( __FILE__, array( bp_extender(), '_activate' ) );
-register_deactivation_hook( __FILE__, array( bp_extender(), '_deactivate' ) );
+register_activation_hook( __FILE__, array( bpextender(), '_activate' ) );
+register_deactivation_hook( __FILE__, array( bpextender(), '_deactivate' ) );
