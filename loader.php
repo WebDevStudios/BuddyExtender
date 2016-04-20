@@ -418,6 +418,7 @@ function bpext_run_extended_settings() {
 					define ( 'BP_AVATAR_ORIGINAL_MAX_WIDTH', (int) $options[$key] );
 			break;
 			case 'avatar_default_image' :
+				add_filter('bp_core_fetch_avatar_no_grav', '__return_true');
 				if( !defined('BP_AVATAR_DEFAULT') )
 					define ( 'BP_AVATAR_DEFAULT', $options[$key] );
 				if( !defined('BP_AVATAR_DEFAULT_THUMB') )
@@ -465,7 +466,7 @@ function bpext_run_extended_settings() {
 	}
 
 }
-add_action( 'plugins_loaded', 'bpext_run_extended_settings' );
+add_action( 'init', 'bpext_run_extended_settings' );
 
 /**
  * bpext_run_bp_included_settings loads
