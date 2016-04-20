@@ -267,15 +267,16 @@ class BPExtender_Admin {
 			'type' => 'checkbox',
 		) );
 
-		$cmb->add_field( array(
-			'name' 	=> 'Multisite Settings',
-			'desc' 	=> 'These options display when BuddyPress is active on multisite',
-			'type' 	=> 'title',
-			'id'	=> 'network_title',
-		) );
 
 		// multisite settings here
 		if( is_multisite() ) {
+
+			$cmb->add_field( array(
+				'name' 	=> 'Multisite Settings',
+				'desc' 	=> 'These options display when BuddyPress is active on multisite',
+				'type' 	=> 'title',
+				'id'	=> 'network_title',
+			) );
 
 			$cmb->add_field( array(
 				'name' => 'Enable Multiblog',

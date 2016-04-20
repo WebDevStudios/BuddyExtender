@@ -442,8 +442,8 @@ function bpext_run_extended_settings() {
 					define ( 'BP_ENABLE_USERNAME_COMPATIBILITY_MODE', true );
 			break;
 			case 'wysiwyg_editor_checkbox' :
-				if( 'on' === $options[$key] && !defined('NO_MEDIA_POST_FORM') )
-					define ( 'NO_MEDIA_POST_FORM', true );
+				if( 'on' === $options[$key] )
+					add_filter( 'bp_xprofile_is_richtext_enabled_for_field', '__return_false' );
 			break;
 			case 'all_autocomplete_checkbox' :
 				if( 'on' === $options[$key] && !defined('BP_MESSAGES_AUTOCOMPLETE_ALL') )
@@ -509,4 +509,5 @@ function bpext_remove_xprofile_links() {
  */
 function bpext_remove_user_mentions() {
 	add_filter('bp_activity_do_mentions', '__return_false');
+	add_filter('bp_activity_maybe_load_mentions_scripts', '__return_false');
 }
