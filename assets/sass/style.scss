@@ -9,3 +9,7 @@ form#bbpext_option_metabox.cmb-form {
     display: inline-block;
     margin-right: 300px;
 }
+
+.cmb-th + .cmb-td {
+    float: none;
+}
