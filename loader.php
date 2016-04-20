@@ -161,6 +161,8 @@ class BP_Extender {
 		add_action( 'init', array( $this, 'init' ) );
 		add_action( 'init', array( $this, 'load_libs' ) );
 		$this->includes();
+
+		add_action( 'admin_enqueue_scripts', array( $this, 'scripts' ) );
 	}
 
 	/**
@@ -193,6 +195,16 @@ class BP_Extender {
 		if ( $this->check_requirements() ) {
 			load_plugin_textdomain( 'bpextender', false, dirname( $this->basename ) . '/languages/' );
 		}
+	}
+
+	/**
+	 * Register scripts
+	 *
+	 * @since  1.0.0
+	 * @return void
+	 */
+	public function scripts() {
+		wp_register_style( 'ad-sidebar', $this->url . 'assets/css/style.css' );
 	}
 
 	/**

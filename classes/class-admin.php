@@ -115,19 +115,8 @@ class BPExtender_Admin {
 	 * @since	1.0.0
 	 */
 	public function admin_page_display() {
+		wp_enqueue_style('ad-sidebar');
 		?>
-		<style>
-		.wdspromos {
-			float: right;
-			position: absolute;
-			right: 10px;
-			width: 275px;
-		}
-		form#bbpext_option_metabox.cmb-form {
-			display: inline-block;
-			margin-right: 300px;
-		}
-		</style>
 		<div class="wrap cmb2-options-page <?php echo $this->key; ?>">
 			<h2><?php _e( 'BuddyExtender', 'bpextender' ); ?></h2>
 			<div id="options-wrap">
