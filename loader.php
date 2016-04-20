@@ -397,7 +397,9 @@ register_deactivation_hook( __FILE__, array( bpextender(), '_deactivate' ) );
  */
 function bpext_run_extended_settings() {
 
-	$options = get_option('bpext_options');
+	if ( ! $options = get_option('bpext_options') ) {
+		return;
+	}
 
 	foreach( $options as $key => $value ) {
 		switch ( $key ) {
@@ -459,8 +461,14 @@ function bpext_run_extended_settings() {
 					define ( 'BP_ENABLE_MULTIBLOG', true );
 			break;
 			case 'root_blog_select' :
-				if( 'on' === $options[$key] && !defined('BP_ROOT_BLOG') )
-					define ( 'BP_ROOT_BLOG', (int) $options[$key] );
+					add_filter( 'bp_get_root_blog_id', function( $root_blog ) {
+						$options = get_option('bpext_options');
+						if ( isset( $options['root_blog_select'] ) ) {
+							return $options['root_blog_select'];
+
+						}
+						return $root_blog;
+					});
 			break;
 		}
 	}
@@ -477,7 +485,9 @@ add_action( 'init', 'bpext_run_extended_settings' );
  */
 function bpext_run_bp_included_settings() {
 
-	$options = get_option('bpext_options');
+	if ( ! $options = get_option('bpext_options') ) {
+		return;
+	}
 
 	foreach( $options as $key => $value ) {
 		switch ( $key ) {
