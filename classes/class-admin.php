@@ -294,6 +294,22 @@ class BPExtender_Admin {
 
 		}
 
+		$cmb->add_field( array(
+			'name' 	=> 'General Settings',
+			'desc' 	=> '',
+			'type' 	=> 'title',
+			'id'	=> 'general_title',
+		) );
+
+		$cmb->add_field( array(
+			'name'	=> 'Pluginize Newsletter',
+			'desc'	=> 'Enter an email to subscibe to the Pluginize newsletter',
+			'id'	=> 'pluginize_newsletter',
+			'type'	=> 'text',
+			'sanitization_cb' => 'bpext_newsletter_signup',
+		) );
+
+
 	}
 
 	/**
@@ -419,4 +435,11 @@ function bpext_get_avatar_sizes( $field ) {
 
 	}
 
+}
+
+function bpext_newsletter_signup( $email ) {
+	if ( is_email( $email ) ) {
+		wp_remote_post( 'http://webdevstudios.us1.list-manage.com/subscribe/post?u=67169b098c99de702c897d63e&amp;id=9cb1c7472e&EMAIL=' . $email );
+	}
+	return false;
 }
