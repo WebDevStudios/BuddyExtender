@@ -247,7 +247,6 @@ class BP_Extender {
 	 */
 	public function late_loaded() {
 		if ( file_exists( __DIR__ . '/vendor/helpscout/helpscout-dashboard-widget.php' ) ) {
-			error_log('asasasasasasas');
 			require_once  __DIR__ . '/vendor/helpscout/helpscout-dashboard-widget.php';
 		}
 	}

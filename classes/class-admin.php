@@ -165,7 +165,7 @@ class BPExtender_Admin {
 		// Set our CMB2 fields.
 		$cmb->add_field( array(
 			'name'				=> 'Avatar Thumb Size',
-			'desc'				=> 'Select an option',
+			'desc'				=> 'Changes user and group avatar to selected dimensions in activity, members and group lists.',
 			'id'				=> 'avatar_thumb_size_select',
 			'type'				=> 'select',
 			'show_option_none' 	=> false,
@@ -175,7 +175,7 @@ class BPExtender_Admin {
 
 		$cmb->add_field( array(
 			'name'				=> 'Avatar Full Size',
-			'desc'				=> 'Select an option',
+			'desc'				=> 'Changes user and group avatar to dimensions in user and group header.',
 			'id'				=> 'avatar_full_size_select',
 			'type'				=> 'select',
 			'show_option_none' 	=> false,
@@ -185,7 +185,7 @@ class BPExtender_Admin {
 
 		$cmb->add_field( array(
 			'name'				=> 'Avatar Max Size',
-			'desc'				=> 'Select an option',
+			'desc'				=> 'Changes maximum image size a user can uplaod for avatars.',
 			'id'				=> 'avatar_max_size_select',
 			'type'				=> 'select',
 			'show_option_none' 	=> false,
@@ -384,18 +384,18 @@ function bpext_get_avatar_sizes( $field ) {
 		case 'avatar_thumb_size_select' :
 
 			$sizes = array(
-					'25' 	=> __( '25px x 25px', 'bpextender' ),
-					'50' 	=> __( '50px x 50px', 'bpextender' ),
-					'75'	=> __( '75px x 75px', 'bpextender' ),
-					'100'	=> __( '100px x 100px', 'bpextender' ),
-					'125' 	=> __( '125px x 125px', 'bpextender' ),
-					'150'	=> __( '150px x 150px', 'bpextender' ),
-					'175'	=> __( '175px x 175px', 'bpextender' ),
-					'200' 	=> __( '200px x 200px', 'bpextender' ),
-					'225'	=> __( '225px x 225px', 'bpextender' ),
-					'250'	=> __( '250px x 250px', 'bpextender' ),
-					'275' 	=> __( '275px x 275px', 'bpextender' ),
-					'300'	=> __( '300px x 300px', 'bpextender' ),
+					'25' 	=> __( '25 x 25', 'bpextender' ),
+					'50' 	=> __( '50 x 50', 'bpextender' ),
+					'75'	=> __( '75 x 75', 'bpextender' ),
+					'100'	=> __( '100 x 100', 'bpextender' ),
+					'125' 	=> __( '125 x 125', 'bpextender' ),
+					'150'	=> __( '150 x 150', 'bpextender' ),
+					'175'	=> __( '175 x 175', 'bpextender' ),
+					'200' 	=> __( '200 x 200', 'bpextender' ),
+					'225'	=> __( '225 x 225', 'bpextender' ),
+					'250'	=> __( '250 x 250', 'bpextender' ),
+					'275' 	=> __( '275 x 275', 'bpextender' ),
+					'300'	=> __( '300 x 300', 'bpextender' ),
 			);
 
 			return apply_filters( 'get_avatar_thumb_sizes', $sizes );
@@ -404,18 +404,18 @@ function bpext_get_avatar_sizes( $field ) {
 		case 'avatar_full_size_select' :
 
 			$sizes = array(
-					'100'	=> __( '100px x 100px', 'bpextender' ),
-					'125' 	=> __( '125px x 125px', 'bpextender' ),
-					'150'	=> __( '150px x 150px', 'bpextender' ),
-					'175'	=> __( '175px x 175px', 'bpextender' ),
-					'200' 	=> __( '200px x 200px', 'bpextender' ),
-					'225'	=> __( '225px x 225px', 'bpextender' ),
-					'250'	=> __( '250px x 250px', 'bpextender' ),
-					'275' 	=> __( '275px x 275px', 'bpextender' ),
-					'300'	=> __( '300px x 300px', 'bpextender' ),
-					'325'	=> __( '300px x 300px', 'bpextender' ),
-					'350'	=> __( '300px x 300px', 'bpextender' ),
-					'375'	=> __( '375px x 375px', 'bpextender' ),
+					'100'	=> __( '100 x 100', 'bpextender' ),
+					'125' 	=> __( '125 x 125', 'bpextender' ),
+					'150'	=> __( '150 x 150', 'bpextender' ),
+					'175'	=> __( '175 x 175', 'bpextender' ),
+					'200' 	=> __( '200 x 200', 'bpextender' ),
+					'225'	=> __( '225 x 225', 'bpextender' ),
+					'250'	=> __( '250 x 250', 'bpextender' ),
+					'275' 	=> __( '275 x 275', 'bpextender' ),
+					'300'	=> __( '300 x 300', 'bpextender' ),
+					'325'	=> __( '300 x 300', 'bpextender' ),
+					'350'	=> __( '300 x 300', 'bpextender' ),
+					'375'	=> __( '375 x 375', 'bpextender' ),
 			);
 
 			return apply_filters( 'get_avatar_full_sizes', $sizes );
@@ -424,10 +424,10 @@ function bpext_get_avatar_sizes( $field ) {
 		case 'avatar_max_size_select' :
 
 			$sizes = array(
-					'320'	 => __( '320px', 'bpextender' ),
-					'640'	 => __( '640px', 'bpextender' ),
-					'960'	 => __( '960px', 'bpextender' ),
-					'1280'	 => __( '1280px', 'bpextender' ),
+					'320'	 => __( '320', 'bpextender' ),
+					'640'	 => __( '640', 'bpextender' ),
+					'960'	 => __( '960', 'bpextender' ),
+					'1280'	 => __( '1280', 'bpextender' ),
 			);
 
 			return apply_filters( 'get_max_full_sizes', $sizes );
