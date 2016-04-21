@@ -159,7 +159,7 @@ class BP_Extender {
 		add_action( 'init', array( $this, 'init' ) );
 		add_action( 'init', array( $this, 'load_libs' ) );
 		$this->includes();
-
+		add_action( 'init', array( $this, 'late_loaded' ), 999 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'scripts' ) );
 	}
 
@@ -236,6 +236,19 @@ class BP_Extender {
 
 		if ( file_exists( __DIR__ . '/classes/class-admin.php' ) ) {
 			require_once  __DIR__ . '/classes/class-admin.php';
+		}
+	}
+
+	/**
+	 * Includes loaded late
+	 *
+	 * @since  1.0.0
+	 * @return void
+	 */
+	public function late_loaded() {
+		if ( file_exists( __DIR__ . '/vendor/helpscout/helpscout-dashboard-widget.php' ) ) {
+			error_log('asasasasasasas');
+			require_once  __DIR__ . '/vendor/helpscout/helpscout-dashboard-widget.php';
 		}
 	}
 

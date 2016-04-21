@@ -39,7 +39,7 @@ class Helpscout_Customer_Dashboard {
 	 * Register Dashboard widget.
 	 */
 	public function add_dashboard_widget() {
-		add_meta_box( 'Helpscout-dashboard-widget', __( 'Pluginize Support', 'Helpscout-dashboard-widget' ), array( $this, 'dashboard_widget' ), 'dashboard', 'side', 'high' );
+		add_meta_box( 'Helpscout-dashboard-widget', __( 'Pluginize', 'Helpscout-dashboard-widget' ), array( $this, 'dashboard_widget' ), 'dashboard', 'side', 'high' );
 
 		// Add to network dashboard.
 		wp_add_dashboard_widget(
@@ -54,18 +54,13 @@ class Helpscout_Customer_Dashboard {
 	 */
 	public function dashboard_widget() {
 
-		 $header_message = is_super_admin()
-		 ? __( 'Thank you for choosing Pluginize! Here you can see our latest posts, search for help or submit a ticket.', 'pluginize-dashboard-widget' )
-		 : __( 'Pluginize products expand your ability to win the race with plugins used by companies looking for proven results.', 'pluginize-dashboard-widget' )
+		 $header_message = __( 'Pluginize products expand your ability to win the race with plugins used by companies looking for proven results.', 'pluginize-dashboard-widget' );
 
 		 ?>
 		 <div class="pluginize-header"><p><img src="<?php echo $this->plugin->url( 'assets/img/pluginize.png' ); ?>" alt="<?php __( 'Pluginize Support', 'Helpscout-dashboard-widget' ); ?>" /></p>
 		 <p style="margin-top: 17px;"><?php esc_attr_e( $header_message ); ?></p></div>
 
 		<div class="pluginize-body">
-			<?php if ( current_user_can( 'manage_options' ) ) : ?>
-				<a id="support-beacon" class="button" href="#"><?php esc_attr_e( 'Search Help Docs', 'Helpscout-dashboard-widget' ); ?></a>
-			<?php endif ; ?>
 		</div>
 
 		<?php $this->pluginize_rest_data() ?>
