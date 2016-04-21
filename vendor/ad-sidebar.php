@@ -18,8 +18,6 @@ function bpext_products_sidebar() {
 		}
 	}
 
-	error_log( print_r( $ads, true ) );
-
 	if ( ! empty( $ads ) ) {
 		echo '<div class="pluginizepromos">';
 		foreach ( $ads->buddyextender->sidebar as $ad ) {
