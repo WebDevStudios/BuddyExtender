@@ -51,7 +51,7 @@ class BPExtender_Admin {
 	 * @since 1.0.0
 	 */
 	private function __construct() {
-		// Set our title
+		// Set our title.
 		$this->title = __( 'BuddyExtender', 'bpextended' );
 	}
 
@@ -61,7 +61,7 @@ class BPExtender_Admin {
 	 * @return bpext_Admin
 	 **/
 	public static function get_instance() {
-		if( is_null( self::$instance ) ) {
+		if ( is_null( self::$instance ) ) {
 			self::$instance = new BPExtender_Admin();
 			self::$instance->hooks();
 		}
@@ -84,6 +84,7 @@ class BPExtender_Admin {
 	 * Register our setting to WP
 	 *
 	 * @since	1.0.0
+	 * @return void
 	 */
 	public function init() {
 		register_setting( $this->key, $this->key );
@@ -93,6 +94,7 @@ class BPExtender_Admin {
 	 * Add menu options page
 	 *
 	 * @since 1.0.0
+	 * @return void
 	 */
 	public function add_options_page() {
 
@@ -113,12 +115,13 @@ class BPExtender_Admin {
 	 * Admin page markup. Mostly handled by CMB2
 	 *
 	 * @since	1.0.0
+	 * @return void
 	 */
 	public function admin_page_display() {
-		wp_enqueue_style('ad-sidebar');
+		wp_enqueue_style( 'ad-sidebar' );
 		?>
-		<div class="wrap cmb2-options-page <?php echo $this->key; ?>">
-			<h2><?php _e( 'BuddyExtender', 'bpextender' ); ?></h2>
+		<div class="wrap cmb2-options-page <?php echo esc_attr( $this->key ); ?>">
+			<h2><?php esc_attr_e( 'BuddyExtender', 'bpextender' ); ?></h2>
 			<div id="options-wrap">
 				<?php bpext_products_sidebar(); ?>
 				<?php cmb2_metabox_form( $this->metabox_id, $this->key ); ?>
@@ -133,10 +136,11 @@ class BPExtender_Admin {
 	 * Add the options metabox to the array of metaboxes
 	 *
 	 * @since	1.0.0
+	 * @return void
 	 */
 	function add_options_page_metabox() {
 
-		// hook in our save notices
+		// Hook in our save notices.
 		add_action( "cmb2_save_options-page_fields_{$this->metabox_id}", array( $this, 'settings_notices' ), 10, 2 );
 
 		$cmb = new_cmb2_box( array(
@@ -146,12 +150,11 @@ class BPExtender_Admin {
 			'show_on'		=> array(
 			// These are important don't remove.
 				'key'	=> 'options-page',
-				'value' => array( $this->key, ),
+				'value' => array( $this->key ),
 			),
 		) );
 
 		// ************* Avatar settings ***********************************************
-
 		$cmb->add_field( array(
 			'name' 	=> 'Avatar Settings',
 			'desc' 	=> 'customize user avatar dimentions and defaults',
@@ -160,7 +163,6 @@ class BPExtender_Admin {
 		) );
 
 		// Set our CMB2 fields.
-
 		$cmb->add_field( array(
 			'name'				=> 'Avatar Thumb Size',
 			'desc'				=> 'Select an option',
@@ -203,7 +205,6 @@ class BPExtender_Admin {
 		) );
 
 		// ************* Advanced settings ***********************************************
-
 		$cmb->add_field( array(
 			'name' 	=> 'Advanced Settings',
 			'desc' 	=> 'Internal configuration settings. These settings can break your site.',
@@ -267,9 +268,8 @@ class BPExtender_Admin {
 			'type' => 'checkbox',
 		) );
 
-
-		// multisite settings here
-		if( is_multisite() ) {
+		// Multisite settings here.
+		if ( is_multisite() ) {
 
 			$cmb->add_field( array(
 				'name' 	=> 'Multisite Settings',
@@ -309,15 +309,14 @@ class BPExtender_Admin {
 			'sanitization_cb' => 'bpext_newsletter_signup',
 		) );
 
-
 	}
 
 	/**
 	 * Register settings notices for display
 	 *
-	 * @since	1.0.0
-	 * @param	int	 $object_id Option key
-	 * @param	array $updated	 Array of updated fields
+	 * @since 1.0.0
+	 * @param int   $object_id Option key.
+	 * @param array $updated Array of updated fields.
 	 * @return void
 	 */
 	public function settings_notices( $object_id, $updated ) {
@@ -333,8 +332,8 @@ class BPExtender_Admin {
 	 * Public getter method for retrieving protected/private variables
 	 *
 	 * @since 1.0.0
-	 * @param string $field Field to retrieve
-	 * @return mixed Field value or exception is thrown
+	 * @param string $field Field to retrieve.
+	 * @return mixed Field value or exception is thrown.
 	 */
 	public function __get( $field ) {
 		// Allowed fields to retrieve.
@@ -344,7 +343,6 @@ class BPExtender_Admin {
 
 		throw new Exception( 'Invalid property: ' . $field );
 	}
-
 }
 
 /**
@@ -359,20 +357,23 @@ function bpext_admin() {
 
 /**
  * Wrapper function around cmb2_get_option
+ *
  * @since	1.0.0
- * @param	string	$key Options array key
- * @return mixed				Option value
+ * @param	string $key Options array key.
+ * @return mixed Option value
  */
 function bpext_get_option( $key = '' ) {
 	return cmb2_get_option( bpext_admin()->key, $key );
 }
 
-// Get it started
+// Get it started.
 bpext_admin();
 
 /**
- * bpext_get_avatar_sizes returns various select options for avatar sizes
- * @param	array $field
+ * Returns various select options for avatar sizes
+ *
+ * @since	1.0.0
+ * @param object $field cmb2 filed data.
  * @return array
  */
 function bpext_get_avatar_sizes( $field ) {
@@ -437,6 +438,13 @@ function bpext_get_avatar_sizes( $field ) {
 
 }
 
+/**
+ * Checks for valid email and signs user to newsletter
+ *
+ * @since	1.0.0
+ * @param  sting $email Email.
+ * @return boolean
+ */
 function bpext_newsletter_signup( $email ) {
 	if ( is_email( $email ) ) {
 		wp_remote_post( 'http://webdevstudios.us1.list-manage.com/subscribe/post?u=67169b098c99de702c897d63e&amp;id=9cb1c7472e&EMAIL=' . $email );

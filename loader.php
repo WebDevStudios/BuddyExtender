@@ -146,9 +146,7 @@ class BP_Extender {
 	 * @return void
 	 */
 	public function plugin_classes() {
-		// Attach other plugin classes to the base plugin class.
-		// $this->plugin_class = new WDS_Plugin_Class( $this );
-		//$this->bpextadmin = new BPExtender_Admin();
+
 	} // END OF PLUGIN CLASSES FUNCTION
 
 	/**
@@ -284,10 +282,8 @@ class BP_Extender {
 	 * @return boolean True if requirements are met.
 	 */
 	public static function meets_requirements() {
-		// Do checks for required classes / functions
-		// function_exists('') & class_exists('').
 		// We have met all requirements.
-		if ( ! class_exists('BuddyPress') ) {
+		if ( ! class_exists( 'BuddyPress' ) ) {
 			return false;
 		}
 		return true;
@@ -389,7 +385,7 @@ register_activation_hook( __FILE__, array( bpextender(), '_activate' ) );
 register_deactivation_hook( __FILE__, array( bpextender(), '_deactivate' ) );
 
 /**
- * bpext_run_extended_settings loads
+ * Bpext_run_extended_settings loads
  *
  * BP defines hooked to plugins loaded before BP
  *
@@ -397,72 +393,72 @@ register_deactivation_hook( __FILE__, array( bpextender(), '_deactivate' ) );
  */
 function bpext_run_extended_settings() {
 
-	if ( ! $options = get_option('bpext_options') ) {
+	if ( ! $options = get_option( 'bpext_options' ) ) {
 		return;
 	}
 
-	foreach( $options as $key => $value ) {
+	foreach ( $options as $key => $value ) {
 		switch ( $key ) {
 			case 'avatar_thumb_size_select' :
-				if( !defined('BP_AVATAR_THUMB_WIDTH') )
-					define ( 'BP_AVATAR_THUMB_WIDTH', (int) $options[$key] );
-				if( !defined('BP_AVATAR_THUMB_HEIGHT') )
-					define ( 'BP_AVATAR_THUMB_HEIGHT', (int) $options[$key] );
+				if ( ! defined( 'BP_AVATAR_THUMB_WIDTH' ) )
+					define( 'BP_AVATAR_THUMB_WIDTH', (int) $options[ $key ] );
+				if ( ! defined( 'BP_AVATAR_THUMB_HEIGHT' ) )
+					define( 'BP_AVATAR_THUMB_HEIGHT', (int) $options[ $key ] );
 			break;
 			case 'avatar_full_size_select' :
-				if( !defined('BP_AVATAR_FULL_WIDTH') )
-					define ( 'BP_AVATAR_FULL_WIDTH', (int) $options[$key] );
-				if( !defined('BP_AVATAR_FULL_HEIGHT') )
-					define ( 'BP_AVATAR_FULL_HEIGHT', (int) $options[$key] );
+				if ( ! defined( 'BP_AVATAR_FULL_WIDTH' ) )
+					define( 'BP_AVATAR_FULL_WIDTH', (int) $options[ $key ] );
+				if ( ! defined( 'BP_AVATAR_FULL_HEIGHT' ) )
+					define( 'BP_AVATAR_FULL_HEIGHT', (int) $options[ $key ] );
 			break;
 			case 'avatar_max_size_select' :
-				if( !defined('BP_AVATAR_ORIGINAL_MAX_WIDTH') )
-					define ( 'BP_AVATAR_ORIGINAL_MAX_WIDTH', (int) $options[$key] );
+				if ( ! defined( 'BP_AVATAR_ORIGINAL_MAX_WIDTH' ) )
+					define( 'BP_AVATAR_ORIGINAL_MAX_WIDTH', (int) $options[ $key ] );
 			break;
 			case 'avatar_default_image' :
-				add_filter('bp_core_fetch_avatar_no_grav', '__return_true');
-				if( !defined('BP_AVATAR_DEFAULT') )
-					define ( 'BP_AVATAR_DEFAULT', $options[$key] );
-				if( !defined('BP_AVATAR_DEFAULT_THUMB') )
-					define ( 'BP_AVATAR_DEFAULT_THUMB', $options[$key] );
+				add_filter( 'bp_core_fetch_avatar_no_grav', '__return_true' );
+				if ( ! defined( 'BP_AVATAR_DEFAULT' ) )
+					define( 'BP_AVATAR_DEFAULT', $options[ $key ] );
+				if ( ! defined( 'BP_AVATAR_DEFAULT_THUMB' ) )
+					define( 'BP_AVATAR_DEFAULT_THUMB', $options[ $key ] );
 			break;
-			// advanced options
+			// Advanced options.
 			case 'root_profiles_checkbox' :
-				if( 'on' === $options[$key] && !defined('BP_ENABLE_ROOT_PROFILES') )
-					define ( 'BP_ENABLE_ROOT_PROFILES', true );
+				if ( 'on' === $options[ $key ] && ! defined( 'BP_ENABLE_ROOT_PROFILES' ) )
+					define( 'BP_ENABLE_ROOT_PROFILES', true );
 			break;
 			case 'cover_image_checkbox' :
-				if( 'on' === $options[$key] && !defined('BP_DTHEME_DISABLE_CUSTOM_HEADER') )
-					define ( 'BP_DTHEME_DISABLE_CUSTOM_HEADER', true );
+				if ( 'on' === $options[ $key ] && ! defined( 'BP_DTHEME_DISABLE_CUSTOM_HEADER' ) )
+					define( 'BP_DTHEME_DISABLE_CUSTOM_HEADER', true );
 			break;
 			case 'group_auto_join_checkbox' :
-				if( 'on' === $options[$key] && !defined('BP_DISABLE_AUTO_GROUP_JOIN') )
-					define ( 'BP_DISABLE_AUTO_GROUP_JOIN', true );
+				if ( 'on' === $options[ $key ] && ! defined( 'BP_DISABLE_AUTO_GROUP_JOIN' ) )
+					define( 'BP_DISABLE_AUTO_GROUP_JOIN', true );
 			break;
 			case 'ldap_username_checkbox' :
-				if( 'on' === $options[$key] && !defined('BP_ENABLE_USERNAME_COMPATIBILITY_MODE') )
-					define ( 'BP_ENABLE_USERNAME_COMPATIBILITY_MODE', true );
+				if ( 'on' === $options[ $key ] && ! defined( 'BP_ENABLE_USERNAME_COMPATIBILITY_MODE' ) )
+					define( 'BP_ENABLE_USERNAME_COMPATIBILITY_MODE', true );
 			break;
 			case 'wysiwyg_editor_checkbox' :
-				if( 'on' === $options[$key] )
+				if ( 'on' === $options[ $key ] )
 					add_filter( 'bp_xprofile_is_richtext_enabled_for_field', '__return_false' );
 			break;
 			case 'all_autocomplete_checkbox' :
-				if( 'on' === $options[$key] && !defined('BP_MESSAGES_AUTOCOMPLETE_ALL') )
-					define ( 'BP_MESSAGES_AUTOCOMPLETE_ALL', true );
+				if ( 'on' === $options[ $key ] && ! defined( 'BP_MESSAGES_AUTOCOMPLETE_ALL' ) )
+					define( 'BP_MESSAGES_AUTOCOMPLETE_ALL', true );
 			break;
 			case 'depricated_code_checkbox' :
-				if( 'on' === $options[$key] && !defined('BP_IGNORE_DEPRECATED') )
-					define ( 'BP_IGNORE_DEPRECATED', true );
+				if ( 'on' === $options[ $key ] && ! defined( 'BP_IGNORE_DEPRECATED' ) )
+					define( 'BP_IGNORE_DEPRECATED', true );
 			break;
-			// multisite options
+			// Multisite options.
 			case 'enable_multiblog_checkbox' :
-				if( 'on' === $options[$key] && !defined('BP_ENABLE_MULTIBLOG') )
-					define ( 'BP_ENABLE_MULTIBLOG', true );
+				if ( 'on' === $options[ $key ] && ! defined( 'BP_ENABLE_MULTIBLOG' ) )
+					define( 'BP_ENABLE_MULTIBLOG', true );
 			break;
 			case 'root_blog_select' :
 					add_filter( 'bp_get_root_blog_id', function( $root_blog ) {
-						$options = get_option('bpext_options');
+						$options = get_option( 'bpext_options' );
 						if ( isset( $options['root_blog_select'] ) ) {
 							return $options['root_blog_select'];
 
@@ -477,7 +473,7 @@ function bpext_run_extended_settings() {
 add_action( 'init', 'bpext_run_extended_settings' );
 
 /**
- * bpext_run_bp_included_settings loads
+ * Bpext_run_bp_included_settings loads
  *
  * BP filter/action hooked to bp include
  *
@@ -485,18 +481,18 @@ add_action( 'init', 'bpext_run_extended_settings' );
  */
 function bpext_run_bp_included_settings() {
 
-	if ( ! $options = get_option('bpext_options') ) {
+	if ( ! $options = get_option( 'bpext_options' ) ) {
 		return;
 	}
 
-	foreach( $options as $key => $value ) {
+	foreach ( $options as $key => $value ) {
 		switch ( $key ) {
 			case 'profile_autolink_checkbox' :
-				if( 'on' === $options[$key] )
+				if ( 'on' === $options[ $key ] )
 					add_action( 'bp_init', 'bpext_remove_xprofile_links' );
 			break;
 			case 'user_mentions_checkbox' :
-				if( 'on' === $options[$key] )
+				if ( 'on' === $options[ $key ] )
 					add_action( 'bp_init', 'bpext_remove_user_mentions' );
 			break;
 		}
@@ -506,7 +502,8 @@ function bpext_run_bp_included_settings() {
 add_action( 'bp_include', 'bpext_run_bp_included_settings' );
 
 /**
- * bpext_remove_xprofile_links
+ * Bpext_remove_xprofile_links
+ *
  * @return void
  */
 function bpext_remove_xprofile_links() {
@@ -514,10 +511,11 @@ function bpext_remove_xprofile_links() {
 }
 
 /**
- * bpext_remove_user_mentions
+ * Bpext_remove_user_mentions
+ *
  * @return void
  */
 function bpext_remove_user_mentions() {
-	add_filter('bp_activity_do_mentions', '__return_false');
-	add_filter('bp_activity_maybe_load_mentions_scripts', '__return_false');
+	add_filter( 'bp_activity_do_mentions', '__return_false' );
+	add_filter( 'bp_activity_maybe_load_mentions_scripts', '__return_false' );
 }
