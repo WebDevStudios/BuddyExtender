@@ -302,8 +302,8 @@ class BPExtender_Admin {
 		) );
 
 		$cmb->add_field( array(
-			'name'	=> 'Pluginize Newsletter',
-			'desc'	=> 'Enter an email to subscibe to the Pluginize newsletter',
+			'name'	=> 'Newsletter',
+			'desc'	=> 'Enter an email address to recieve updates, tutorials and additional infomation about BuddyExtender.',
 			'id'	=> 'pluginize_newsletter',
 			'type'	=> 'text',
 			'sanitization_cb' => 'bpext_newsletter_signup',

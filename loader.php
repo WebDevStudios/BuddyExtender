@@ -13,7 +13,7 @@
  * Plugin URI:  http://pluginize.com
  * Description: Extend BuddyPress with extra settings and options.
  * Version:	 1.0.0
- * Author:	  WebDevStudios
+ * Author:	  Pluginize from WebDevStudios
  * Author URI:  http://pluginize.com
  * License:	 GPLv2
  * Text Domain: wds
