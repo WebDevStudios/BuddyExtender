@@ -302,8 +302,8 @@ class BPExtender_Admin {
 		) );
 
 		$cmb->add_field( array(
-			'name'				=> __( 'Pluginize Newsletter', 'bpext' ),
-			'desc'				=> __( 'Enter an email to subscibe to the Pluginize newsletter', 'bpext' ),
+			'name'				=> __( 'Newsletter', 'bpext' ),
+			'desc'				=> __( 'Enter an email address to receive updates, tutorials and additional information about BuddyExtender.', 'bpext' ),
 			'id'				=> 'pluginize_newsletter',
 			'type'				=> 'text',
 			'sanitization_cb'	=> 'bpext_newsletter_signup',
@@ -384,18 +384,18 @@ function bpext_get_avatar_sizes( $field ) {
 		case 'avatar_thumb_size_select' :
 
 			$sizes = array(
-					'25'	=> __( '25 x 25', 'bpext' ),
-					'50'	=> __( '50 x 50', 'bpext' ),
-					'75'	=> __( '75 x 75', 'bpext' ),
-					'100'	=> __( '100 x 100', 'bpext' ),
-					'125'	=> __( '125 x 125', 'bpext' ),
-					'150'	=> __( '150 x 150', 'bpext' ),
-					'175'	=> __( '175 x 175', 'bpext' ),
-					'200'	=> __( '200 x 200', 'bpext' ),
-					'225'	=> __( '225 x 225', 'bpext' ),
-					'250'	=> __( '250 x 250', 'bpext' ),
-					'275'	=> __( '275 x 275', 'bpext' ),
-					'300'	=> __( '300 x 300', 'bpext' ),
+					'25'	=> __( '25 x 25 px', 'bpext' ),
+					'50'	=> __( '50 x 50 px', 'bpext' ),
+					'75'	=> __( '75 x 75 px', 'bpext' ),
+					'100'	=> __( '100 x 100 px', 'bpext' ),
+					'125'	=> __( '125 x 125 px', 'bpext' ),
+					'150'	=> __( '150 x 150 px', 'bpext' ),
+					'175'	=> __( '175 x 175 px', 'bpext' ),
+					'200'	=> __( '200 x 200 px', 'bpext' ),
+					'225'	=> __( '225 x 225 px', 'bpext' ),
+					'250'	=> __( '250 x 250 px', 'bpext' ),
+					'275'	=> __( '275 x 275 px', 'bpext' ),
+					'300'	=> __( '300 x 300 px', 'bpext' ),
 			);
 
 			return apply_filters( 'get_avatar_thumb_sizes', $sizes );
@@ -404,18 +404,18 @@ function bpext_get_avatar_sizes( $field ) {
 		case 'avatar_full_size_select' :
 
 			$sizes = array(
-					'100'	=> __( '100 x 100', 'bpext' ),
-					'125'	=> __( '125 x 125', 'bpext' ),
-					'150'	=> __( '150 x 150', 'bpext' ),
-					'175'	=> __( '175 x 175', 'bpext' ),
-					'200'	=> __( '200 x 200', 'bpext' ),
-					'225'	=> __( '225 x 225', 'bpext' ),
-					'250'	=> __( '250 x 250', 'bpext' ),
-					'275'	=> __( '275 x 275', 'bpext' ),
-					'300'	=> __( '300 x 300', 'bpext' ),
-					'325'	=> __( '300 x 300', 'bpext' ),
-					'350'	=> __( '300 x 300', 'bpext' ),
-					'375'	=> __( '375 x 375', 'bpext' ),
+					'100'	=> __( '100 x 100 px', 'bpext' ),
+					'125'	=> __( '125 x 125 px', 'bpext' ),
+					'150'	=> __( '150 x 150 px', 'bpext' ),
+					'175'	=> __( '175 x 175 px', 'bpext' ),
+					'200'	=> __( '200 x 200 px', 'bpext' ),
+					'225'	=> __( '225 x 225 px', 'bpext' ),
+					'250'	=> __( '250 x 250 px', 'bpext' ),
+					'275'	=> __( '275 x 275 px', 'bpext' ),
+					'300'	=> __( '300 x 300 px', 'bpext' ),
+					'325'	=> __( '300 x 300 px', 'bpext' ),
+					'350'	=> __( '300 x 300 px', 'bpext' ),
+					'375'	=> __( '375 x 375 px', 'bpext' ),
 			);
 
 			return apply_filters( 'get_avatar_full_sizes', $sizes );
@@ -424,10 +424,10 @@ function bpext_get_avatar_sizes( $field ) {
 		case 'avatar_max_size_select' :
 
 			$sizes = array(
-					'320'	=> __( '320', 'bpext' ),
-					'640'	=> __( '640', 'bpext' ),
-					'960'	=> __( '960', 'bpext' ),
-					'1280'	=> __( '1280', 'bpext' ),
+					'320'	=> __( '320 px', 'bpext' ),
+					'640'	=> __( '640 px', 'bpext' ),
+					'960'	=> __( '960 px', 'bpext' ),
+					'1280'	=> __( '1280 px', 'bpext' ),
 			);
 
 			return apply_filters( 'get_max_full_sizes', $sizes );
