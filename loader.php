@@ -191,7 +191,7 @@ class BP_Extender {
 	 */
 	public function init() {
 		if ( $this->check_requirements() ) {
-			load_plugin_textdomain( 'bpextender', false, dirname( $this->basename ) . '/languages/' );
+			load_plugin_textdomain( 'bpext', false, dirname( $this->basename ) . '/languages/' );
 		}
 	}
 
@@ -309,7 +309,7 @@ class BP_Extender {
 	 */
 	public function requirements_not_met_notice() {
 		// Output our error.
-		$error_text = sprintf( __( 'BuddyExtender is missing requirements and has been <a href="%s">deactivated</a>. Please make sure BuddyPres is installed and activated.', 'bpextender' ), admin_url( 'plugins.php' ) );
+		$error_text = sprintf( __( 'BuddyExtender is missing requirements and has been <a href="%s">deactivated</a>. Please make sure BuddyPres is installed and activated.', 'bpext' ), admin_url( 'plugins.php' ) );
 
 		echo '<div id="message" class="error">';
 		echo '<p>' . esc_html( $error_text ) . '</p>';
