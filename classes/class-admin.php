@@ -123,9 +123,7 @@ class BPExtender_Admin {
 		<div class="wrap cmb2-options-page <?php echo esc_attr( $this->key ); ?>">
 			<h2><?php esc_attr_e( 'BuddyExtender', 'bpext' ); ?></h2>
 			<div id="options-wrap">
-				<?php bpext_products_sidebar(); ?>
 				<?php cmb2_metabox_form( $this->metabox_id, $this->key ); ?>
-
 			</div>
 
 		</div>
@@ -307,6 +305,13 @@ class BPExtender_Admin {
 			'id'				=> 'pluginize_newsletter',
 			'type'				=> 'text',
 			'sanitization_cb'	=> 'bpext_newsletter_signup',
+		) );
+
+		$cmb->add_field( array(
+			'name'	=> __( ' ', 'bpext' ),
+			'desc'	=> bpext_products_sidebar(),
+			'type'	=> 'title',
+			'id'	=> 'sidebar',
 		) );
 
 	}
