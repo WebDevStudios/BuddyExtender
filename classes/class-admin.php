@@ -157,7 +157,7 @@ class BPExtender_Admin {
 		// ************* Avatar settings ***********************************************
 		$cmb->add_field( array(
 			'name' 	=> 'Avatar Settings',
-			'desc' 	=> 'customize user avatar dimentions and defaults',
+			'desc' 	=> 'Customize user avatar dimentions and defaults',
 			'type' 	=> 'title',
 			'id'	=> 'avatar_title',
 		) );
@@ -207,7 +207,7 @@ class BPExtender_Admin {
 		// ************* Advanced settings ***********************************************
 		$cmb->add_field( array(
 			'name' 	=> 'Advanced Settings',
-			'desc' 	=> 'Internal configuration settings. These settings can break your site.',
+			'desc' 	=> 'Internal configuration settings. Please make sure to check site after changing these options.',
 			'type' 	=> 'title',
 			'id'	=> 'advanced_title',
 		) );
