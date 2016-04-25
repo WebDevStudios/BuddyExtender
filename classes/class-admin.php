@@ -303,7 +303,7 @@ class BPExtender_Admin {
 
 		$cmb->add_field( array(
 			'name'				=> __( 'Newsletter', 'bpext' ),
-			'desc'				=> __( 'Enter an email address to receive updates, tutorials and additional information about BuddyExtender.', 'bpext' ),
+			'desc'				=> __( 'Get email updates from pluginize.com about BuddyExtender.', 'bpext' ),
 			'id'				=> 'pluginize_newsletter',
 			'type'				=> 'text',
 			'sanitization_cb'	=> 'bpext_newsletter_signup',
