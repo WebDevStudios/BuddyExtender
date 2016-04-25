@@ -242,7 +242,7 @@ class BPExtender_Admin {
 
 		$cmb->add_field( array(
 			'name'	=> __( 'All Members Auto Complete', 'bpext' ),
-			'desc'	=> __( 'All members instead of friends in messages auto complete.', 'bpext' ),
+			'desc'	=> __( 'Auto-complete all members instead of just friends in messages.', 'bpext' ),
 			'id'	=> 'all_autocomplete_checkbox',
 			'type'	=> 'checkbox',
 		) );
