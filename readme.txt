@@ -24,6 +24,7 @@ Get BuddyPress goodness without the coding knowledge! Until now, BuddyPress has 
 
 == Screenshots ==
 
+1. BuddyExtender settings page
 
 == Changelog ==
 
