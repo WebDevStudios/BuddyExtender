@@ -469,20 +469,28 @@ function bpext_run_extended_settings() {
 					define( 'BP_ENABLE_MULTIBLOG', true );
 			break;
 			case 'root_blog_select' :
-					add_filter( 'bp_get_root_blog_id', function( $root_blog ) {
-						$options = get_option( 'bpext_options' );
-						if ( isset( $options['root_blog_select'] ) ) {
-							return $options['root_blog_select'];
-
-						}
-						return $root_blog;
-					});
+					add_filter( 'bp_get_root_blog_id', 'bpext_filter_root_blog_id' );
 			break;
 		}
 	}
 
 }
 add_action( 'init', 'bpext_run_extended_settings' );
+
+/**
+ * Changes root blog id on wpmu
+ *
+ * @param  integer $root_blog blog id.
+ * @return integer blog id
+ */
+function bpext_filter_root_blog_id( $root_blog ) {
+	$options = get_option( 'bpext_options' );
+	if ( isset( $options['root_blog_select'] ) ) {
+		return $options['root_blog_select'];
+
+	}
+	return $root_blog;
+}
 
 /**
  * Bpext_run_bp_included_settings loads
