@@ -309,10 +309,10 @@ class BP_Extender {
 	 */
 	public function requirements_not_met_notice() {
 		// Output our error.
-		$error_text = sprintf( __( 'BuddyExtender is missing requirements and has been <a href="%s">deactivated</a>. Please make sure BuddyPres is installed and activated.', 'bpext' ), admin_url( 'plugins.php' ) );
+		$error_text = sprintf( __( 'BuddyExtender is missing requirements and has been <a href="%s">deactivated</a>. Please make sure BuddyPress is installed and activated.', 'bpext' ), admin_url( 'plugins.php' ) );
 
 		echo '<div id="message" class="error">';
-		echo '<p>' . esc_html( $error_text ) . '</p>';
+		echo '<p>' . $error_text . '</p>';
 		echo '</div>';
 	}
 
