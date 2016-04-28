@@ -46,20 +46,20 @@
  * @param  string $class_name Name of the class being requested.
  * @return void
  */
-function bp_extender_autoload_classes( $class_name ) {
+function bpextender_autoload_classes( $class_name ) {
 
-	if ( 0 !== strpos( $class_name, 'BPExtender_' ) ) {
+	if ( 0 !== strpos( $class_name, 'BuddyExtender_' ) ) {
 		return;
 	}
 
 	$filename = strtolower( str_replace(
 		'_', '-',
-		substr( $class_name, strlen( 'BPExtender_' ) )
+		substr( $class_name, strlen( 'BuddyExtender_' ) )
 	) );
 
-	BP_Extender::include_file( $filename );
+	BuddyExtender::include_file( $filename );
 }
-spl_autoload_register( 'bp_extender_autoload_classes' );
+spl_autoload_register( 'bpextender_autoload_classes' );
 
 /**
  * Main initiation class
@@ -70,7 +70,7 @@ spl_autoload_register( 'bp_extender_autoload_classes' );
  * @var  string $url	  Plugin URL
  * @var  string $path	 Plugin Path
  */
-class BP_Extender {
+class BuddyExtender {
 
 	/**
 	 * Current version
@@ -107,7 +107,7 @@ class BP_Extender {
 	/**
 	 * Singleton instance of plugin
 	 *
-	 * @var BP_Extender
+	 * @var BPExtender
 	 * @since  1.0.0
 	 */
 	protected static $single_instance = null;
@@ -116,7 +116,7 @@ class BP_Extender {
 	 * Creates or returns an instance of this class.
 	 *
 	 * @since  1.0.0
-	 * @return BP_Extender A single instance of this class.
+	 * @return BPExtender A single instance of this class.
 	 */
 	public static function get_instance() {
 		if ( null === self::$single_instance ) {
@@ -380,30 +380,31 @@ class BP_Extender {
 }
 
 /**
- * Grab the BP_Extender object and return it.
- * Wrapper for BP_Extender::get_instance()
+ * Grab the BPExtender object and return it.
+ * Wrapper for BPExtender::get_instance()
  *
  * @since  1.0.0
- * @return BP_Extender Singleton instance of plugin class.
+ * @return BPExtender Singleton instance of plugin class.
  */
-function bpextender() {
-	return BP_Extender::get_instance();
+function buddyextender() {
+	return BuddyExtender::get_instance();
 }
 
 // Kick it off.
-add_action( 'plugins_loaded', array( bpextender(), 'hooks' ) );
+add_action( 'plugins_loaded', array( buddyextender(), 'hooks' ) );
 
-register_activation_hook( __FILE__, array( bpextender(), '_activate' ) );
-register_deactivation_hook( __FILE__, array( bpextender(), '_deactivate' ) );
+register_activation_hook( __FILE__, array( buddyextender(), '_activate' ) );
+register_deactivation_hook( __FILE__, array( buddyextender(), '_deactivate' ) );
 
 /**
- * Bpext_run_extended_settings loads
+ * Sets BuddyPress defines. The BP_ prefix are from internal BuddyPress defines.
+ * https://codex.buddypress.org/getting-started/customizing/changing-internal-configuration-settings/
  *
- * BP defines hooked to plugins loaded before BP
+ * BuddyPress defines hooked to init before BP is loaded
  *
  * @return void
  */
-function bpext_run_extended_settings() {
+function bpextender_run_extended_settings() {
 
 	if ( ! $options = get_option( 'bpext_options' ) ) {
 		return;
@@ -434,11 +435,6 @@ function bpext_run_extended_settings() {
 				if ( ! defined( 'BP_AVATAR_DEFAULT_THUMB' ) )
 					define( 'BP_AVATAR_DEFAULT_THUMB', $options[ $key ] );
 			break;
-			// Advanced options.
-			case 'root_profiles_checkbox' :
-				if ( 'on' === $options[ $key ] && ! defined( 'BP_ENABLE_ROOT_PROFILES' ) )
-					define( 'BP_ENABLE_ROOT_PROFILES', true );
-			break;
 			case 'cover_image_checkbox' :
 				if ( 'on' === $options[ $key ] && ! defined( 'BP_DTHEME_DISABLE_CUSTOM_HEADER' ) )
 					define( 'BP_DTHEME_DISABLE_CUSTOM_HEADER', true );
@@ -447,59 +443,37 @@ function bpext_run_extended_settings() {
 				if ( 'on' === $options[ $key ] && ! defined( 'BP_DISABLE_AUTO_GROUP_JOIN' ) )
 					define( 'BP_DISABLE_AUTO_GROUP_JOIN', true );
 			break;
-			case 'ldap_username_checkbox' :
-				if ( 'on' === $options[ $key ] && ! defined( 'BP_ENABLE_USERNAME_COMPATIBILITY_MODE' ) )
-					define( 'BP_ENABLE_USERNAME_COMPATIBILITY_MODE', true );
-			break;
-			case 'wysiwyg_editor_checkbox' :
-				if ( 'on' === $options[ $key ] )
-					add_filter( 'bp_xprofile_is_richtext_enabled_for_field', '__return_false' );
-			break;
 			case 'all_autocomplete_checkbox' :
 				if ( 'on' === $options[ $key ] && ! defined( 'BP_MESSAGES_AUTOCOMPLETE_ALL' ) )
 					define( 'BP_MESSAGES_AUTOCOMPLETE_ALL', true );
 			break;
-			case 'depricated_code_checkbox' :
-				if ( 'on' === $options[ $key ] && ! defined( 'BP_IGNORE_DEPRECATED' ) )
-					define( 'BP_IGNORE_DEPRECATED', true );
-			break;
-			// Multisite options.
-			case 'enable_multiblog_checkbox' :
-				if ( 'on' === $options[ $key ] && ! defined( 'BP_ENABLE_MULTIBLOG' ) )
-					define( 'BP_ENABLE_MULTIBLOG', true );
-			break;
-			case 'root_blog_select' :
-					add_filter( 'bp_get_root_blog_id', 'bpext_filter_root_blog_id' );
-			break;
+
 		}
 	}
 
 }
-add_action( 'init', 'bpext_run_extended_settings' );
+add_action( 'init', 'bpextender_run_extended_settings' );
 
 /**
- * Changes root blog id on wpmu
+ * Returns root blog id on wpmu
  *
  * @param  integer $root_blog blog id.
  * @return integer blog id
  */
-function bpext_filter_root_blog_id( $root_blog ) {
+function bpextender_filter_root_blog_id( $root_blog ) {
 	$options = get_option( 'bpext_options' );
 	if ( isset( $options['root_blog_select'] ) ) {
 		return $options['root_blog_select'];
-
 	}
 	return $root_blog;
 }
 
 /**
- * Bpext_run_bp_included_settings loads
- *
- * BP filter/action hooked to bp include
+ * Runs BP configuration filters on bp_include
  *
  * @return void
  */
-function bpext_run_bp_included_settings() {
+function bpextender_run_bp_included_settings() {
 
 	if ( ! $options = get_option( 'bpext_options' ) ) {
 		return;
@@ -509,33 +483,39 @@ function bpext_run_bp_included_settings() {
 		switch ( $key ) {
 			case 'profile_autolink_checkbox' :
 				if ( 'on' === $options[ $key ] )
-					add_action( 'bp_init', 'bpext_remove_xprofile_links' );
+					remove_filter( 'bp_get_the_profile_field_value', 'xprofile_filter_link_profile_data', 9, 2 );
 			break;
 			case 'user_mentions_checkbox' :
 				if ( 'on' === $options[ $key ] )
-					add_action( 'bp_init', 'bpext_remove_user_mentions' );
+					add_filter( 'bp_activity_do_mentions', '__return_false' );
+					add_filter( 'bp_activity_maybe_load_mentions_scripts', '__return_false' );
+			break;
+			case 'root_profiles_checkbox' :
+				if ( 'on' === $options[ $key ] )
+					add_filter( 'bp_core_enable_root_profiles', '__return_true' );
+			break;
+			case 'ldap_username_checkbox' :
+				if ( 'on' === $options[ $key ] )
+					add_filter( 'bp_is_username_compatibility_mode', '__return_true' );
+			break;
+			case 'wysiwyg_editor_checkbox' :
+				if ( 'on' === $options[ $key ] )
+					add_filter( 'bp_xprofile_is_richtext_enabled_for_field', '__return_false' );
+			break;
+			case 'depricated_code_checkbox' :
+				if ( 'on' === $options[ $key ] )
+					add_filter( 'bp_ignore_deprecated', '__return_true' );
+			break;
+			// Multisite options.
+			case 'enable_multiblog_checkbox' :
+				if ( 'on' === $options[ $key ] )
+					add_filter( 'bp_is_multiblog_mode', '__return_true' );
+			break;
+			case 'root_blog_select' :
+					add_filter( 'bp_get_root_blog_id', 'bpextender_filter_root_blog_id' );
 			break;
 		}
 	}
 
 }
-add_action( 'bp_include', 'bpext_run_bp_included_settings' );
-
-/**
- * Bpext_remove_xprofile_links
- *
- * @return void
- */
-function bpext_remove_xprofile_links() {
-	remove_filter( 'bp_get_the_profile_field_value', 'xprofile_filter_link_profile_data', 9, 2 );
-}
-
-/**
- * Bpext_remove_user_mentions
- *
- * @return void
- */
-function bpext_remove_user_mentions() {
-	add_filter( 'bp_activity_do_mentions', '__return_false' );
-	add_filter( 'bp_activity_maybe_load_mentions_scripts', '__return_false' );
-}
+add_action( 'bp_include', 'bpextender_run_bp_included_settings' );

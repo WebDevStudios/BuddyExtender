@@ -8,7 +8,7 @@
  *
  * @internal
  */
-function bpext_products_sidebar() {
+function bpextender_products_sidebar() {
 	if ( false === ( $ads = get_transient( 'pluginize_promos' ) ) ) {
 		$ads = wp_remote_get( 'https://pluginize.com/assets/json/sidebar.json' );
 

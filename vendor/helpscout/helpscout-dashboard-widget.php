@@ -1,15 +1,4 @@
 <?php
-/*
-Plugin Name: Pluginize Dashboard Widget
-Version: 1.2.2
-Description: A plugin to connect Pluginize Customers with Awesome support and resources
-Author: WebDevStudios
-Author URI: http://pluginize.com/
-Plugin URI: http://pluginize.com/
-Text Domain: pluginize-dashboard-widget
-Domain Path: /languages
-*/
-
 /**
  * Copyright (c) 2015 WebDevStudios / Pluginize (email : contact@pluginize.com)
  *

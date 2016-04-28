@@ -1,14 +1,14 @@
 <?php
 /**
- * BPExtender_Admin class
+ * BuddyExtender_Admin class
  *
- * @package BPExtenderAdmin
- * @subpackage BP_Extender
+ * @package BuddyExtenderAdmin
+ * @subpackage BuddyExtender
  * @author WebDevStudios
  * @since 1.0.0
  */
 
-class BPExtender_Admin {
+class BuddyExtender_Admin {
 
 	/**
 	 * Option key, and option page slug
@@ -41,7 +41,7 @@ class BPExtender_Admin {
 	/**
 	 * Holds an instance of the object
 	 *
-	 * @var bpext_Admin
+	 * @var bpextender_Admin
 	 **/
 	private static $instance = null;
 
@@ -58,11 +58,11 @@ class BPExtender_Admin {
 	/**
 	 * Returns the running object
 	 *
-	 * @return bpext_Admin
+	 * @return BPExtender_Admin
 	 **/
 	public static function get_instance() {
 		if ( is_null( self::$instance ) ) {
-			self::$instance = new BPExtender_Admin();
+			self::$instance = new BuddyExtender_Admin();
 			self::$instance->hooks();
 		}
 		return self::$instance;
@@ -123,11 +123,10 @@ class BPExtender_Admin {
 		<div class="wrap cmb2-options-page <?php echo esc_attr( $this->key ); ?>">
 			<h2><?php esc_attr_e( 'BuddyExtender', 'bpext' ); ?></h2>
 			<div id="options-wrap">
-				<?php bpext_products_sidebar(); ?>
+				<?php bpextender_products_sidebar(); ?>
 				<?php cmb2_metabox_form( $this->metabox_id, $this->key ); ?>
 
 			</div>
-
 		</div>
 		<?php
 	}
@@ -170,7 +169,7 @@ class BPExtender_Admin {
 			'type'				=> 'select',
 			'show_option_none' 	=> false,
 			'default'			=> '50',
-			'options'			=> 'bpext_get_avatar_sizes',
+			'options'			=> 'bpextender_get_avatar_sizes',
 		) );
 
 		$cmb->add_field( array(
@@ -180,7 +179,7 @@ class BPExtender_Admin {
 			'type'				=> 'select',
 			'show_option_none' 	=> false,
 			'default'			=> '150',
-			'options'			=> 'bpext_get_avatar_sizes',
+			'options'			=> 'bpextender_get_avatar_sizes',
 		) );
 
 		$cmb->add_field( array(
@@ -190,7 +189,7 @@ class BPExtender_Admin {
 			'type'				=> 'select',
 			'show_option_none' 	=> false,
 			'default'			=> '640',
-			'options'			=> 'bpext_get_avatar_sizes',
+			'options'			=> 'bpextender_get_avatar_sizes',
 		) );
 
 		$cmb->add_field( array(
@@ -306,7 +305,7 @@ class BPExtender_Admin {
 			'desc'				=> __( 'Add email address to get updates from pluginize.com about BuddyExtender.', 'bpext' ),
 			'id'				=> 'pluginize_newsletter',
 			'type'				=> 'text',
-			'sanitization_cb'	=> 'bpext_newsletter_signup',
+			'sanitization_cb'	=> 'bpextender_newsletter_signup',
 		) );
 
 		$cmb->add_field( array(
@@ -356,10 +355,10 @@ class BPExtender_Admin {
  * Helper function to get/return the BPExtender_Admin object
  *
  * @since	1.0.0
- * @return bpext_Admin object
+ * @return bpextender_Admin object
  */
-function bpext_admin() {
-	return BPExtender_Admin::get_instance();
+function buddyextender_admin() {
+	return BuddyExtender_Admin::get_instance();
 }
 
 /**
@@ -369,12 +368,12 @@ function bpext_admin() {
  * @param	string $key Options array key.
  * @return mixed Option value
  */
-function bpext_get_option( $key = '' ) {
-	return cmb2_get_option( bpext_admin()->key, $key );
+function bpextender_get_option( $key = '' ) {
+	return cmb2_get_option( buddyextender_admin()->key, $key );
 }
 
 // Get it started.
-bpext_admin();
+buddyextender_admin();
 
 /**
  * Returns various select options for avatar sizes
@@ -383,7 +382,7 @@ bpext_admin();
  * @param object $field cmb2 filed data.
  * @return array
  */
-function bpext_get_avatar_sizes( $field ) {
+function bpextender_get_avatar_sizes( $field ) {
 
 	$field_id = $field->args['id'];
 
@@ -449,12 +448,11 @@ function bpext_get_avatar_sizes( $field ) {
  * Checks for valid email and signs user to newsletter
  *
  * @since	1.0.0
- * @param  sting $email Email.
- * @return boolean
+ * @param  string $email Email.
+ * @return void
  */
-function bpext_newsletter_signup( $email ) {
+function bpextender_newsletter_signup( $email ) {
 	if ( is_email( $email ) ) {
 		wp_remote_post( 'http://webdevstudios.us1.list-manage.com/subscribe/post?u=67169b098c99de702c897d63e&amp;id=9cb1c7472e&EMAIL=' . $email );
 	}
-	return false;
 }
