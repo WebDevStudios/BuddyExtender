@@ -121,7 +121,7 @@ class BuddyExtender_Admin {
 		wp_enqueue_style( 'ad-sidebar' );
 		?>
 		<div class="wrap cmb2-options-page <?php echo esc_attr( $this->key ); ?>">
-			<h2><?php esc_attr_e( 'BuddyExtender', 'bpext' ); ?></h2>
+			<h2><?php esc_attr_e( 'BuddyExtender', 'bpextended' ); ?></h2>
 			<div id="options-wrap">
 				<?php bpextender_products_sidebar(); ?>
 				<?php cmb2_metabox_form( $this->metabox_id, $this->key ); ?>
@@ -155,16 +155,16 @@ class BuddyExtender_Admin {
 
 		// ************* Avatar settings ***********************************************
 		$cmb->add_field( array(
-			'name'	=> __( 'Avatar Settings', 'bpext' ),
-			'desc'	=> __( 'Customize user avatar dimentions and defaults', 'bpext' ),
+			'name'	=> __( 'Avatar Settings', 'bpextended' ),
+			'desc'	=> __( 'Customize user avatar dimentions and defaults', 'bpextended' ),
 			'type'	=> 'title',
 			'id'	=> 'avatar_title',
 		) );
 
 		// Set our CMB2 fields.
 		$cmb->add_field( array(
-			'name'				=> __( 'Avatar Thumb Size', 'bpext' ),
-			'desc'				=> __( 'Changes user and group avatar to selected dimensions in activity, members and group lists.', 'bpext' ),
+			'name'				=> __( 'Avatar Thumb Size', 'bpextended' ),
+			'desc'				=> __( 'Changes user and group avatar to selected dimensions in activity, members and group lists.', 'bpextended' ),
 			'id'				=> 'avatar_thumb_size_select',
 			'type'				=> 'select',
 			'show_option_none' 	=> false,
@@ -173,8 +173,8 @@ class BuddyExtender_Admin {
 		) );
 
 		$cmb->add_field( array(
-			'name'				=> __( 'Avatar Full Size', 'bpext' ),
-			'desc'				=> __( 'Changes user and group avatar to dimensions in user and group header.', 'bpext' ),
+			'name'				=> __( 'Avatar Full Size', 'bpextended' ),
+			'desc'				=> __( 'Changes user and group avatar to dimensions in user and group header.', 'bpextended' ),
 			'id'				=> 'avatar_full_size_select',
 			'type'				=> 'select',
 			'show_option_none' 	=> false,
@@ -183,8 +183,8 @@ class BuddyExtender_Admin {
 		) );
 
 		$cmb->add_field( array(
-			'name'				=> __( 'Avatar Max Size', 'bpext' ),
-			'desc'				=> __( 'Changes maximum image size a user can uplaod for avatars.', 'bpext' ),
+			'name'				=> __( 'Avatar Max Size', 'bpextended' ),
+			'desc'				=> __( 'Changes maximum image size a user can uplaod for avatars.', 'bpextended' ),
 			'id'				=> 'avatar_max_size_select',
 			'type'				=> 'select',
 			'show_option_none' 	=> false,
@@ -193,8 +193,8 @@ class BuddyExtender_Admin {
 		) );
 
 		$cmb->add_field( array(
-			'name'	=> __( 'Default User Avatar', 'bpext' ),
-			'desc'	=> __( 'Upload an image that displays before a user has added a custom image.', 'bpext' ),
+			'name'	=> __( 'Default User Avatar', 'bpextended' ),
+			'desc'	=> __( 'Upload an image that displays before a user has added a custom image.', 'bpextended' ),
 			'id'	=> 'avatar_default_image',
 			'type'	=> 'file',
 			'options'	=> array(
@@ -205,64 +205,64 @@ class BuddyExtender_Admin {
 
 		// ************* Advanced settings ***********************************************
 		$cmb->add_field( array(
-			'name'	=> __( 'Advanced Settings', 'bpext' ),
-			'desc'	=> __( 'Internal configuration settings. Please make sure to check site after changing these options.', 'bpext' ),
+			'name'	=> __( 'Advanced Settings', 'bpextended' ),
+			'desc'	=> __( 'Internal configuration settings. Please make sure to check site after changing these options.', 'bpextended' ),
 			'type'	=> 'title',
 			'id'	=> 'advanced_title',
 		) );
 
 		$cmb->add_field( array(
-			'name'	=> __( 'Root Profiles', 'bpext' ),
-			'desc'	=> __( 'Remove members slug from profile url.', 'bpext' ),
+			'name'	=> __( 'Root Profiles', 'bpextended' ),
+			'desc'	=> __( 'Remove members slug from profile url.', 'bpextended' ),
 			'id'	=> 'root_profiles_checkbox',
 			'type'	=> 'checkbox',
 		) );
 
 		$cmb->add_field( array(
-			'name'	=> __( 'Auto Group Join', 'bpext' ),
-			'desc'	=> __( 'disable auto join when posting in a group.', 'bpext' ),
+			'name'	=> __( 'Auto Group Join', 'bpextended' ),
+			'desc'	=> __( 'disable auto join when posting in a group.', 'bpextended' ),
 			'id'	=> 'group_auto_join_checkbox',
 			'type'	=> 'checkbox',
 		) );
 
 		$cmb->add_field( array(
-			'name'	=> __( 'LDAP Usernames', 'bpext' ),
-			'desc'	=> __( 'Enable support for LDAP usernames that include dots.', 'bpext' ),
+			'name'	=> __( 'LDAP Usernames', 'bpextended' ),
+			'desc'	=> __( 'Enable support for LDAP usernames that include dots.', 'bpextended' ),
 			'id'	=> 'ldap_username_checkbox',
 			'type'	=> 'checkbox',
 		) );
 
 		$cmb->add_field( array(
-			'name'	=> __( 'WYSIWYG Textarea', 'bpext' ),
-			'desc'	=> __( 'Removes text editor from textarea profile field.', 'bpext' ),
+			'name'	=> __( 'WYSIWYG Textarea', 'bpextended' ),
+			'desc'	=> __( 'Removes text editor from textarea profile field.', 'bpextended' ),
 			'id'	=> 'wysiwyg_editor_checkbox',
 			'type'	=> 'checkbox',
 		) );
 
 		$cmb->add_field( array(
-			'name'	=> __( 'All Members Auto Complete', 'bpext' ),
-			'desc'	=> __( 'Auto-complete all members instead of just friends in messages.', 'bpext' ),
+			'name'	=> __( 'All Members Auto Complete', 'bpextended' ),
+			'desc'	=> __( 'Auto-complete all members instead of just friends in messages.', 'bpextended' ),
 			'id'	=> 'all_autocomplete_checkbox',
 			'type'	=> 'checkbox',
 		) );
 
 		$cmb->add_field( array(
-			'name'	=> __( 'Profile Fields Auto Link', 'bpext' ),
-			'desc'	=> __( 'Disable autolinking in profile fields.', 'bpext' ),
+			'name'	=> __( 'Profile Fields Auto Link', 'bpextended' ),
+			'desc'	=> __( 'Disable autolinking in profile fields.', 'bpextended' ),
 			'id'	=> 'profile_autolink_checkbox',
 			'type'	=> 'checkbox',
 		) );
 
 		$cmb->add_field( array(
-			'name'	=> __( 'User @ Mentions', 'bpext' ),
-			'desc'	=> __( 'Disable User @ mentions.', 'bpext' ),
+			'name'	=> __( 'User @ Mentions', 'bpextended' ),
+			'desc'	=> __( 'Disable User @ mentions.', 'bpextended' ),
 			'id'	=> 'user_mentions_checkbox',
 			'type'	=> 'checkbox',
 		) );
 
 		$cmb->add_field( array(
-			'name'	=> __( 'Ignore Depricated Code', 'bpext' ),
-			'desc'	=> __( 'Do not load depricated code', 'bpext' ),
+			'name'	=> __( 'Ignore Depricated Code', 'bpextended' ),
+			'desc'	=> __( 'Do not load depricated code', 'bpextended' ),
 			'id'	=> 'depricated_code_checkbox',
 			'type'	=> 'checkbox',
 		) );
@@ -271,22 +271,22 @@ class BuddyExtender_Admin {
 		if ( is_multisite() ) {
 
 			$cmb->add_field( array(
-				'name'	=> __( 'Multisite Settings', 'bpext' ),
-				'desc'	=> __( 'These options display when BuddyPress is active on multisite', 'bpext' ),
+				'name'	=> __( 'Multisite Settings', 'bpextended' ),
+				'desc'	=> __( 'These options display when BuddyPress is active on multisite', 'bpextended' ),
 				'type'	=> 'title',
 				'id'	=> 'network_title',
 			) );
 
 			$cmb->add_field( array(
 				'name'	=> 'Enable Multiblog',
-				'desc'	=> __( 'Allow BuddyPress to function on multiple blogs of a WPMU installation, not just on one root blog', 'bpext' ),
+				'desc'	=> __( 'Allow BuddyPress to function on multiple blogs of a WPMU installation, not just on one root blog', 'bpextended' ),
 				'id'	=> 'enable_multiblog_checkbox',
 				'type'	=> 'checkbox',
 			) );
 
 			$cmb->add_field( array(
-				'name'	=> __( 'Root Blog ID', 'bpext' ),
-				'desc'	=> __( 'Enter blog ID BuddyPress will run on. Default ID is 1', 'bpext' ),
+				'name'	=> __( 'Root Blog ID', 'bpextended' ),
+				'desc'	=> __( 'Enter blog ID BuddyPress will run on. Default ID is 1', 'bpextended' ),
 				'id'	=> 'root_blog_select',
 				'type'	=> 'text',
 			) );
@@ -294,23 +294,23 @@ class BuddyExtender_Admin {
 		}
 
 		$cmb->add_field( array(
-			'name'	=> __( 'General Settings', 'bpext' ),
-			'desc'	=> __( '', 'bpext' ),
+			'name'	=> __( 'General Settings', 'bpextended' ),
+			'desc'	=> __( '', 'bpextended' ),
 			'type'	=> 'title',
 			'id'	=> 'general_title',
 		) );
 
 		$cmb->add_field( array(
-			'name'				=> __( 'Newsletter', 'bpext' ),
-			'desc'				=> __( 'Add email address to get updates from pluginize.com about BuddyExtender.', 'bpext' ),
+			'name'				=> __( 'Newsletter', 'bpextended' ),
+			'desc'				=> __( 'Add email address to get updates from pluginize.com about BuddyExtender.', 'bpextended' ),
 			'id'				=> 'pluginize_newsletter',
 			'type'				=> 'text',
 			'sanitization_cb'	=> 'bpextender_newsletter_signup',
 		) );
 
 		$cmb->add_field( array(
-			'name'	=> __( ' ', 'bpext' ),
-			'desc'	=> __( '', 'bpext' ),
+			'name'	=> __( ' ', 'bpextended' ),
+			'desc'	=> __( '', 'bpextended' ),
 			'type'	=> 'title',
 			'id'	=> 'sidebar',
 		) );
@@ -330,7 +330,7 @@ class BuddyExtender_Admin {
 			return;
 		}
 
-		add_settings_error( $this->key . '-notices', '', __( 'Settings updated.', 'bpext' ), 'updated' );
+		add_settings_error( $this->key . '-notices', '', __( 'Settings updated.', 'bpextended' ), 'updated' );
 		settings_errors( $this->key . '-notices' );
 	}
 
@@ -390,18 +390,18 @@ function bpextender_get_avatar_sizes( $field ) {
 		case 'avatar_thumb_size_select' :
 
 			$sizes = array(
-					'25'	=> __( '25 x 25 px', 'bpext' ),
-					'50'	=> __( '50 x 50 px', 'bpext' ),
-					'75'	=> __( '75 x 75 px', 'bpext' ),
-					'100'	=> __( '100 x 100 px', 'bpext' ),
-					'125'	=> __( '125 x 125 px', 'bpext' ),
-					'150'	=> __( '150 x 150 px', 'bpext' ),
-					'175'	=> __( '175 x 175 px', 'bpext' ),
-					'200'	=> __( '200 x 200 px', 'bpext' ),
-					'225'	=> __( '225 x 225 px', 'bpext' ),
-					'250'	=> __( '250 x 250 px', 'bpext' ),
-					'275'	=> __( '275 x 275 px', 'bpext' ),
-					'300'	=> __( '300 x 300 px', 'bpext' ),
+					'25'	=> __( '25 x 25 px', 'bpextended' ),
+					'50'	=> __( '50 x 50 px', 'bpextended' ),
+					'75'	=> __( '75 x 75 px', 'bpextended' ),
+					'100'	=> __( '100 x 100 px', 'bpextended' ),
+					'125'	=> __( '125 x 125 px', 'bpextended' ),
+					'150'	=> __( '150 x 150 px', 'bpextended' ),
+					'175'	=> __( '175 x 175 px', 'bpextended' ),
+					'200'	=> __( '200 x 200 px', 'bpextended' ),
+					'225'	=> __( '225 x 225 px', 'bpextended' ),
+					'250'	=> __( '250 x 250 px', 'bpextended' ),
+					'275'	=> __( '275 x 275 px', 'bpextended' ),
+					'300'	=> __( '300 x 300 px', 'bpextended' ),
 			);
 
 			return apply_filters( 'get_avatar_thumb_sizes', $sizes );
@@ -410,18 +410,18 @@ function bpextender_get_avatar_sizes( $field ) {
 		case 'avatar_full_size_select' :
 
 			$sizes = array(
-					'100'	=> __( '100 x 100 px', 'bpext' ),
-					'125'	=> __( '125 x 125 px', 'bpext' ),
-					'150'	=> __( '150 x 150 px', 'bpext' ),
-					'175'	=> __( '175 x 175 px', 'bpext' ),
-					'200'	=> __( '200 x 200 px', 'bpext' ),
-					'225'	=> __( '225 x 225 px', 'bpext' ),
-					'250'	=> __( '250 x 250 px', 'bpext' ),
-					'275'	=> __( '275 x 275 px', 'bpext' ),
-					'300'	=> __( '300 x 300 px', 'bpext' ),
-					'325'	=> __( '300 x 300 px', 'bpext' ),
-					'350'	=> __( '300 x 300 px', 'bpext' ),
-					'375'	=> __( '375 x 375 px', 'bpext' ),
+					'100'	=> __( '100 x 100 px', 'bpextended' ),
+					'125'	=> __( '125 x 125 px', 'bpextended' ),
+					'150'	=> __( '150 x 150 px', 'bpextended' ),
+					'175'	=> __( '175 x 175 px', 'bpextended' ),
+					'200'	=> __( '200 x 200 px', 'bpextended' ),
+					'225'	=> __( '225 x 225 px', 'bpextended' ),
+					'250'	=> __( '250 x 250 px', 'bpextended' ),
+					'275'	=> __( '275 x 275 px', 'bpextended' ),
+					'300'	=> __( '300 x 300 px', 'bpextended' ),
+					'325'	=> __( '325 x 325 px', 'bpextended' ),
+					'350'	=> __( '350 x 350 px', 'bpextended' ),
+					'375'	=> __( '375 x 375 px', 'bpextended' ),
 			);
 
 			return apply_filters( 'get_avatar_full_sizes', $sizes );
@@ -430,10 +430,10 @@ function bpextender_get_avatar_sizes( $field ) {
 		case 'avatar_max_size_select' :
 
 			$sizes = array(
-					'320'	=> __( '320 px', 'bpext' ),
-					'640'	=> __( '640 px', 'bpext' ),
-					'960'	=> __( '960 px', 'bpext' ),
-					'1280'	=> __( '1280 px', 'bpext' ),
+					'320'	=> __( '320 px', 'bpextended' ),
+					'640'	=> __( '640 px', 'bpextended' ),
+					'960'	=> __( '960 px', 'bpextended' ),
+					'1280'	=> __( '1280 px', 'bpextended' ),
 			);
 
 			return apply_filters( 'get_max_full_sizes', $sizes );
