@@ -414,41 +414,92 @@ function bpextender_run_extended_settings() {
 	foreach ( $options as $key => $value ) {
 		switch ( $key ) {
 			case 'avatar_thumb_size_select' :
-				if ( ! defined( 'BP_AVATAR_THUMB_WIDTH' ) )
+				if ( ! defined( 'BP_AVATAR_THUMB_WIDTH' ) ) {
 					define( 'BP_AVATAR_THUMB_WIDTH', (int) $options[ $key ] );
-				if ( ! defined( 'BP_AVATAR_THUMB_HEIGHT' ) )
+				}
+				if ( ! defined( 'BP_AVATAR_THUMB_HEIGHT' ) ) {
 					define( 'BP_AVATAR_THUMB_HEIGHT', (int) $options[ $key ] );
+				}
 			break;
 			case 'avatar_full_size_select' :
-				if ( ! defined( 'BP_AVATAR_FULL_WIDTH' ) )
+				if ( ! defined( 'BP_AVATAR_FULL_WIDTH' ) ) {
 					define( 'BP_AVATAR_FULL_WIDTH', (int) $options[ $key ] );
-				if ( ! defined( 'BP_AVATAR_FULL_HEIGHT' ) )
+				}
+				if ( ! defined( 'BP_AVATAR_FULL_HEIGHT' ) ) {
 					define( 'BP_AVATAR_FULL_HEIGHT', (int) $options[ $key ] );
+				}
 			break;
 			case 'avatar_max_size_select' :
-				if ( ! defined( 'BP_AVATAR_ORIGINAL_MAX_WIDTH' ) )
+				if ( ! defined( 'BP_AVATAR_ORIGINAL_MAX_WIDTH' ) ) {
 					define( 'BP_AVATAR_ORIGINAL_MAX_WIDTH', (int) $options[ $key ] );
+				}
 			break;
 			case 'avatar_default_image' :
 				add_filter( 'bp_core_fetch_avatar_no_grav', '__return_true' );
-				if ( ! defined( 'BP_AVATAR_DEFAULT' ) )
+				if ( ! defined( 'BP_AVATAR_DEFAULT' ) ) {
 					define( 'BP_AVATAR_DEFAULT', $options[ $key ] );
-				if ( ! defined( 'BP_AVATAR_DEFAULT_THUMB' ) )
+				}
+				if ( ! defined( 'BP_AVATAR_DEFAULT_THUMB' ) ) {
 					define( 'BP_AVATAR_DEFAULT_THUMB', $options[ $key ] );
-			break;
-			case 'cover_image_checkbox' :
-				if ( 'on' === $options[ $key ] && ! defined( 'BP_DTHEME_DISABLE_CUSTOM_HEADER' ) )
-					define( 'BP_DTHEME_DISABLE_CUSTOM_HEADER', true );
-			break;
-			case 'group_auto_join_checkbox' :
-				if ( 'on' === $options[ $key ] && ! defined( 'BP_DISABLE_AUTO_GROUP_JOIN' ) )
-					define( 'BP_DISABLE_AUTO_GROUP_JOIN', true );
-			break;
-			case 'all_autocomplete_checkbox' :
-				if ( 'on' === $options[ $key ] && ! defined( 'BP_MESSAGES_AUTOCOMPLETE_ALL' ) )
-					define( 'BP_MESSAGES_AUTOCOMPLETE_ALL', true );
+				}
 			break;
 
+			// Advanced options.
+			case 'root_profiles_checkbox' :
+				if ( 'on' === $options[ $key ] && ! defined( 'BP_ENABLE_ROOT_PROFILES' ) ) {
+					define( 'BP_ENABLE_ROOT_PROFILES', true );
+				}
+			break;
+
+			case 'cover_image_checkbox' :
+				if ( 'on' === $options[ $key ] && ! defined( 'BP_DTHEME_DISABLE_CUSTOM_HEADER' ) ) {
+					define( 'BP_DTHEME_DISABLE_CUSTOM_HEADER', true );
+				}
+			break;
+			case 'group_auto_join_checkbox' :
+				if ( 'on' === $options[ $key ] && ! defined( 'BP_DISABLE_AUTO_GROUP_JOIN' ) ) {
+					define( 'BP_DISABLE_AUTO_GROUP_JOIN', true );
+				}
+			break;
+
+			case 'ldap_username_checkbox' :
+				if ( 'on' === $options[ $key ] && ! defined( 'BP_ENABLE_USERNAME_COMPATIBILITY_MODE' ) ) {
+					define( 'BP_ENABLE_USERNAME_COMPATIBILITY_MODE', true );
+				}
+			break;
+			case 'wysiwyg_editor_checkbox' :
+				if ( 'on' === $options[ $key ] ) {
+					add_filter( 'bp_xprofile_is_richtext_enabled_for_field', '__return_false' );
+				}
+			break;
+
+			case 'all_autocomplete_checkbox' :
+				if ( 'on' === $options[ $key ] && ! defined( 'BP_MESSAGES_AUTOCOMPLETE_ALL' ) ) {
+					define( 'BP_MESSAGES_AUTOCOMPLETE_ALL', true );
+				}
+			break;
+
+			case 'depricated_code_checkbox' :
+				if ( 'on' === $options[ $key ] && ! defined( 'BP_IGNORE_DEPRECATED' ) ) {
+					define( 'BP_IGNORE_DEPRECATED', true );
+				}
+			break;
+			// Multisite options.
+			case 'enable_multiblog_checkbox' :
+				if ( 'on' === $options[ $key ] && ! defined( 'BP_ENABLE_MULTIBLOG' ) ) {
+					define( 'BP_ENABLE_MULTIBLOG', true );
+				}
+			break;
+			case 'root_blog_select' :
+					add_filter( 'bp_get_root_blog_id', function( $root_blog ) {
+						$options = get_option( 'bpext_options' );
+						if ( isset( $options['root_blog_select'] ) ) {
+							return $options['root_blog_select'];
+
+						}
+						return $root_blog;
+					});
+			break;
 		}
 	}
 
@@ -516,6 +567,14 @@ function bpextender_run_bp_included_settings() {
 			break;
 			case 'root_blog_select' :
 					add_filter( 'bp_get_root_blog_id', 'bpextender_filter_root_blog_id' );
+				if ( 'on' === $options[ $key ] ) {
+					add_action( 'bp_init', 'bpext_remove_xprofile_links' );
+				}
+			break;
+			case 'user_mentions_checkbox' :
+				if ( 'on' === $options[ $key ] ) {
+					add_action( 'bp_init', 'bpext_remove_user_mentions' );
+				}
 			break;
 		}
 	}
