@@ -8,7 +8,9 @@
  * @since 1.0.0
  */
 
-
+/**
+ * Class BuddyExtender_Admin
+ */
 class BuddyExtender_Admin {
 
 	/**
@@ -45,9 +47,9 @@ class BuddyExtender_Admin {
 
 	/**
 	 * Holds an instance of the object.
-	 *
+
 	 * @since 1.0.0
-	 * @var BPExtender_Admin
+	 * @var BuddyExtender_Admin
 	 */
 	private static $instance = null;
 
@@ -63,10 +65,10 @@ class BuddyExtender_Admin {
 
 	/**
 	 * Returns the running object
-	 *
+
 	 * @since 1.0.0
-	 *
-	 * @return BPExtender_Admin
+
+	 * @return BuddyExtender_Admin
 	 */
 	public static function get_instance() {
 		if ( is_null( self::$instance ) ) {

@@ -536,38 +536,45 @@ function bpextender_run_bp_included_settings() {
 	foreach ( $options as $key => $value ) {
 		switch ( $key ) {
 			case 'profile_autolink_checkbox' :
-				if ( 'on' === $options[ $key ] )
+				if ( 'on' === $options[ $key ] ) {
 					remove_filter( 'bp_get_the_profile_field_value', 'xprofile_filter_link_profile_data', 9, 2 );
+				}
 			break;
 			case 'user_mentions_checkbox' :
-				if ( 'on' === $options[ $key ] )
+				if ( 'on' === $options[ $key ] ) {
 					add_filter( 'bp_activity_do_mentions', '__return_false' );
 					add_filter( 'bp_activity_maybe_load_mentions_scripts', '__return_false' );
+				}
 			break;
 			case 'root_profiles_checkbox' :
-				if ( 'on' === $options[ $key ] )
+				if ( 'on' === $options[ $key ] ) {
 					add_filter( 'bp_core_enable_root_profiles', '__return_true' );
+				}
 			break;
 			case 'ldap_username_checkbox' :
-				if ( 'on' === $options[ $key ] )
+				if ( 'on' === $options[ $key ] ) {
 					add_filter( 'bp_is_username_compatibility_mode', '__return_true' );
+				}
 			break;
 			case 'wysiwyg_editor_checkbox' :
-				if ( 'on' === $options[ $key ] )
+				if ( 'on' === $options[ $key ] ) {
 					add_filter( 'bp_xprofile_is_richtext_enabled_for_field', '__return_false' );
+				}
 			break;
 			case 'depricated_code_checkbox' :
-				if ( 'on' === $options[ $key ] )
+				if ( 'on' === $options[ $key ] ) {
 					add_filter( 'bp_ignore_deprecated', '__return_true' );
+				}
 			break;
 			// Multisite options.
 			case 'enable_multiblog_checkbox' :
-				if ( 'on' === $options[ $key ] )
+				if ( 'on' === $options[ $key ] ) {
 					add_filter( 'bp_is_multiblog_mode', '__return_true' );
+				}
 			break;
 			case 'root_blog_select' :
-					add_filter( 'bp_get_root_blog_id', 'bpextender_filter_root_blog_id' );
 				if ( 'on' === $options[ $key ] ) {
+					add_filter( 'bp_get_root_blog_id', 'bpextender_filter_root_blog_id' );
 					add_action( 'bp_init', 'bpext_remove_xprofile_links' );
 				}
 			break;
