@@ -402,18 +402,18 @@ function bpextender_get_avatar_sizes( $field ) {
 		case 'avatar_thumb_size_select' :
 
 			$sizes = array(
-				'25'  => __( '25 x 25 px', 'bpext' ),
-				'50'  => __( '50 x 50 px', 'bpext' ),
-				'75'  => __( '75 x 75 px', 'bpext' ),
-				'100' => __( '100 x 100 px', 'bpext' ),
-				'125' => __( '125 x 125 px', 'bpext' ),
-				'150' => __( '150 x 150 px', 'bpext' ),
-				'175' => __( '175 x 175 px', 'bpext' ),
-				'200' => __( '200 x 200 px', 'bpext' ),
-				'225' => __( '225 x 225 px', 'bpext' ),
-				'250' => __( '250 x 250 px', 'bpext' ),
-				'275' => __( '275 x 275 px', 'bpext' ),
-				'300' => __( '300 x 300 px', 'bpext' ),
+				'25'  => __( '25 x 25 px', 'bpextended' ),
+				'50'  => __( '50 x 50 px', 'bpextended' ),
+				'75'  => __( '75 x 75 px', 'bpextended' ),
+				'100' => __( '100 x 100 px', 'bpextended' ),
+				'125' => __( '125 x 125 px', 'bpextended' ),
+				'150' => __( '150 x 150 px', 'bpextended' ),
+				'175' => __( '175 x 175 px', 'bpextended' ),
+				'200' => __( '200 x 200 px', 'bpextended' ),
+				'225' => __( '225 x 225 px', 'bpextended' ),
+				'250' => __( '250 x 250 px', 'bpextended' ),
+				'275' => __( '275 x 275 px', 'bpextended' ),
+				'300' => __( '300 x 300 px', 'bpextended' ),
 			);
 
 			/**
@@ -429,18 +429,18 @@ function bpextender_get_avatar_sizes( $field ) {
 		case 'avatar_full_size_select' :
 
 			$sizes = array(
-				'100' => __( '100 x 100 px', 'bpext' ),
-				'125' => __( '125 x 125 px', 'bpext' ),
-				'150' => __( '150 x 150 px', 'bpext' ),
-				'175' => __( '175 x 175 px', 'bpext' ),
-				'200' => __( '200 x 200 px', 'bpext' ),
-				'225' => __( '225 x 225 px', 'bpext' ),
-				'250' => __( '250 x 250 px', 'bpext' ),
-				'275' => __( '275 x 275 px', 'bpext' ),
-				'300' => __( '300 x 300 px', 'bpext' ),
-				'325' => __( '300 x 300 px', 'bpext' ),
-				'350' => __( '300 x 300 px', 'bpext' ),
-				'375' => __( '375 x 375 px', 'bpext' ),
+				'100' => __( '100 x 100 px', 'bpextended' ),
+				'125' => __( '125 x 125 px', 'bpextended' ),
+				'150' => __( '150 x 150 px', 'bpextended' ),
+				'175' => __( '175 x 175 px', 'bpextended' ),
+				'200' => __( '200 x 200 px', 'bpextended' ),
+				'225' => __( '225 x 225 px', 'bpextended' ),
+				'250' => __( '250 x 250 px', 'bpextended' ),
+				'275' => __( '275 x 275 px', 'bpextended' ),
+				'300' => __( '300 x 300 px', 'bpextended' ),
+				'325' => __( '300 x 300 px', 'bpextended' ),
+				'350' => __( '300 x 300 px', 'bpextended' ),
+				'375' => __( '375 x 375 px', 'bpextended' ),
 			);
 
 			/**
@@ -456,10 +456,10 @@ function bpextender_get_avatar_sizes( $field ) {
 		case 'avatar_max_size_select' :
 
 			$sizes = array(
-				'320'  => __( '320 px', 'bpext' ),
-				'640'  => __( '640 px', 'bpext' ),
-				'960'  => __( '960 px', 'bpext' ),
-				'1280' => __( '1280 px', 'bpext' ),
+				'320'  => __( '320 px', 'bpextended' ),
+				'640'  => __( '640 px', 'bpextended' ),
+				'960'  => __( '960 px', 'bpextended' ),
+				'1280' => __( '1280 px', 'bpextended' ),
 			);
 
 			/**
