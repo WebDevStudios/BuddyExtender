@@ -537,7 +537,7 @@ add_action( 'bp_include', 'bpext_run_bp_included_settings' );
  * @since 1.0.0
  */
 function bpext_remove_xprofile_links() {
-	remove_filter( 'bp_get_the_profile_field_value', 'xprofile_filter_link_profile_data', 9, 2 );
+	remove_filter( 'bp_get_the_profile_field_value', 'xprofile_filter_link_profile_data', 9 );
 }
 
 /**
