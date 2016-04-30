@@ -20,6 +20,7 @@ if ( ! function_exists( 'bpextender_products_sidebar' ) ) {
 	 */
 	function bpextender_products_sidebar() {
 		if ( false === ( $ads = get_transient( 'pluginize_promos' ) ) ) {
+			$ads = wp_remote_get( 'https://pluginize.com/assets/json/sidebar.json' );
 			if ( 200 === wp_remote_retrieve_response_code( $ads ) ) {
 				$ads = json_decode( wp_remote_retrieve_body( $ads ) );
 				set_transient( 'pluginize_promos', $ads, DAY_IN_SECONDS );
@@ -30,7 +31,7 @@ if ( ! function_exists( 'bpextender_products_sidebar' ) ) {
 			echo '<div class="pluginizepromos">';
 			foreach ( $ads->buddyextender->sidebar as $ad ) {
 				$the_ad = $ad->text;
-				$image  = wp_remote_get( $ad->image );
+				$image = wp_remote_get( $ad->image );
 				if ( 200 === wp_remote_retrieve_response_code( $image ) ) {
 					$the_ad = sprintf(
 						'<img src="%s" alt="%s">',
