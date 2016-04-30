@@ -1,14 +1,5 @@
 <?php
 /**
- * BuddyExtender products sidebar.
- *
- * @package    BuddyExtender
- * @subpackage ProductSidebar
- * @author     WebDevStudios
- * @since      1.0.0
- */
-
-/**
  * Displays WebDevStudios products in a sidebar on the add/edit screens for post types and taxonomies.
  *
  * @package    BuddyExtender
@@ -27,7 +18,7 @@ if ( ! function_exists( 'bpextender_products_sidebar' ) ) {
 	 *
 	 * @internal
 	 */
-	function bpext_products_sidebar() {
+	function bpextender_products_sidebar() {
 		if ( false === ( $ads = get_transient( 'pluginize_promos' ) ) ) {
 			$ads = wp_remote_get( 'https://pluginize.com/assets/json/sidebar.json' );
 
