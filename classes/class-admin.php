@@ -438,8 +438,8 @@ function bpextender_get_avatar_sizes( $field ) {
 				'250' => __( '250 x 250 px', 'bpextended' ),
 				'275' => __( '275 x 275 px', 'bpextended' ),
 				'300' => __( '300 x 300 px', 'bpextended' ),
-				'325' => __( '300 x 300 px', 'bpextended' ),
-				'350' => __( '300 x 300 px', 'bpextended' ),
+				'325' => __( '325 x 325 px', 'bpextended' ),
+				'350' => __( '350 x 350 px', 'bpextended' ),
 				'375' => __( '375 x 375 px', 'bpextended' ),
 			);
 
