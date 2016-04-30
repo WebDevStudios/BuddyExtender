@@ -10,12 +10,12 @@
 
 /**
  * Plugin Name: BuddyExtender
- * Plugin URI:  http://pluginize.com
+ * Plugin URI: http://pluginize.com
  * Description: Extend BuddyPress with extra settings and options.
- * Version:	 1.0.0
- * Author:	  Pluginize from WebDevStudios
- * Author URI:  http://pluginize.com
- * License:	 GPLv2
+ * Version: 1.0.0
+ * Author: Pluginize from WebDevStudios
+ * Author URI: http://pluginize.com
+ * License: GPLv2
  * Text Domain: wds
  * Domain Path: /languages
  */
@@ -40,11 +40,11 @@
 
 
 /**
- * Autoloads files with classes when needed
+ * Autoloads files with classes when needed.
  *
- * @since  1.0.0
- * @param  string $class_name Name of the class being requested.
- * @return void
+ * @since 1.0.0
+ *
+ * @param string $class_name Name of the class being requested.
  */
 function bp_extender_autoload_classes( $class_name ) {
 
@@ -62,60 +62,62 @@ function bp_extender_autoload_classes( $class_name ) {
 spl_autoload_register( 'bp_extender_autoload_classes' );
 
 /**
- * Main initiation class
+ * Main initiation class.
  *
- * @since  1.0.0
- * @var  string $version  Plugin version
- * @var  string $basename Plugin basename
- * @var  string $url	  Plugin URL
- * @var  string $path	 Plugin Path
+ * @since 1.0.0
+ *
+ * @var string $version  Plugin version.
+ * @var string $basename Plugin basename.
+ * @var string $url      Plugin URL.
+ * @var string $path     Plugin Path.
  */
 class BP_Extender {
 
 	/**
-	 * Current version
+	 * Current version.
 	 *
-	 * @var  string
-	 * @since  1.0.0
+	 * @since 1.0.0
+	 * @var string
 	 */
 	const VERSION = '1.0.0';
 
 	/**
-	 * URL of plugin directory
+	 * URL of plugin directory.
 	 *
+	 * @since 1.0.0
 	 * @var string
-	 * @since  1.0.0
 	 */
 	protected $url = '';
 
 	/**
-	 * Path of plugin directory
+	 * Path of plugin directory.
 	 *
+	 * @since 1.0.0
 	 * @var string
-	 * @since  1.0.0
 	 */
 	protected $path = '';
 
 	/**
-	 * Plugin basename
+	 * Plugin basename.
 	 *
+	 * @since 1.0.0
 	 * @var string
-	 * @since  1.0.0
 	 */
 	protected $basename = '';
 
 	/**
-	 * Singleton instance of plugin
+	 * Singleton instance of plugin.
 	 *
+	 * @since 1.0.0
 	 * @var BP_Extender
-	 * @since  1.0.0
 	 */
 	protected static $single_instance = null;
 
 	/**
 	 * Creates or returns an instance of this class.
 	 *
-	 * @since  1.0.0
+	 * @since 1.0.0
+	 *
 	 * @return BP_Extender A single instance of this class.
 	 */
 	public static function get_instance() {
@@ -127,9 +129,9 @@ class BP_Extender {
 	}
 
 	/**
-	 * Sets up our plugin
+	 * Sets up our plugin.
 	 *
-	 * @since  1.0.0
+	 * @since 1.0.0
 	 */
 	protected function __construct() {
 		$this->basename = plugin_basename( __FILE__ );
@@ -142,18 +144,16 @@ class BP_Extender {
 	/**
 	 * Attach other plugin classes to the base plugin class.
 	 *
-	 * @since  1.0.0
-	 * @return void
+	 * @since 1.0.0
 	 */
 	public function plugin_classes() {
 
 	} // END OF PLUGIN CLASSES FUNCTION
 
 	/**
-	 * Add hooks and filters
+	 * Add hooks and filters.
 	 *
-	 * @since  1.0.0
-	 * @return void
+	 * @since 1.0.0
 	 */
 	public function hooks() {
 		add_action( 'init', array( $this, 'init' ) );
@@ -164,10 +164,9 @@ class BP_Extender {
 	}
 
 	/**
-	 * Activate the plugin
+	 * Activate the plugin.
 	 *
-	 * @since  1.0.0
-	 * @return void
+	 * @since 1.0.0
 	 */
 	function _activate() {
 		// Make sure any rewrite functionality has been loaded.
@@ -175,19 +174,18 @@ class BP_Extender {
 	}
 
 	/**
-	 * Deactivate the plugin
-	 * Uninstall routines should be in uninstall.php
+	 * Deactivate the plugin.
 	 *
-	 * @since  1.0.0
-	 * @return void
+	 * Uninstall routines should be in uninstall.php.
+	 *
+	 * @since 1.0.0
 	 */
 	function _deactivate() {}
 
 	/**
-	 * Init hooks
+	 * Init hooks.
 	 *
-	 * @since  1.0.0
-	 * @return void
+	 * @since 1.0.0
 	 */
 	public function init() {
 		if ( $this->check_requirements() ) {
@@ -196,20 +194,18 @@ class BP_Extender {
 	}
 
 	/**
-	 * Register scripts
+	 * Register scripts.
 	 *
-	 * @since  1.0.0
-	 * @return void
+	 * @since 1.0.0
 	 */
 	public function scripts() {
 		wp_register_style( 'ad-sidebar', $this->url . 'assets/css/style.css' );
 	}
 
 	/**
-	 * Load libraries
+	 * Load libraries.
 	 *
-	 * @since  1.0.0
-	 * @return void
+	 * @since 1.0.0
 	 */
 	public function load_libs() {
 
@@ -227,10 +223,9 @@ class BP_Extender {
 	}
 
 	/**
-	 * Load includes
+	 * Load includes.
 	 *
-	 * @since  1.0.0
-	 * @return void
+	 * @since 1.0.0
 	 */
 	public function includes() {
 
@@ -240,10 +235,9 @@ class BP_Extender {
 	}
 
 	/**
-	 * Includes loaded late
+	 * Includes loaded late.
 	 *
-	 * @since  1.0.0
-	 * @return void
+	 * @since 1.0.0
 	 */
 	public function late_loaded() {
 		if ( file_exists( __DIR__ . '/vendor/helpscout/helpscout-dashboard-widget.php' ) ) {
@@ -255,8 +249,9 @@ class BP_Extender {
 	 * Check if the plugin meets requirements and
 	 * disable it if they are not present.
 	 *
-	 * @since  1.0.0
-	 * @return boolean result of meets_requirements
+	 * @since 1.0.0
+	 *
+	 * @return boolean result of meets_requirements.
 	 */
 	public function check_requirements() {
 		if ( ! $this->meets_requirements() ) {
@@ -276,8 +271,7 @@ class BP_Extender {
 	/**
 	 * Deactivates this plugin, hook this function on admin_init.
 	 *
-	 * @since  1.0.0
-	 * @return void
+	 * @since 1.0.0
 	 */
 	public function deactivate_me() {
 
@@ -288,9 +282,10 @@ class BP_Extender {
 	}
 
 	/**
-	 * Check that all plugin requirements are met
+	 * Check that all plugin requirements are met.
 	 *
-	 * @since  1.0.0
+	 * @since 1.0.0
+	 *
 	 * @return boolean True if requirements are met.
 	 */
 	public static function meets_requirements() {
@@ -302,10 +297,9 @@ class BP_Extender {
 	}
 
 	/**
-	 * Adds a notice to the dashboard if the plugin requirements are not met
+	 * Adds a notice to the dashboard if the plugin requirements are not met.
 	 *
-	 * @since  1.0.0
-	 * @return void
+	 * @since 1.0.0
 	 */
 	public function requirements_not_met_notice() {
 		// Output our error.
@@ -319,9 +313,11 @@ class BP_Extender {
 	/**
 	 * Magic getter for our object.
 	 *
-	 * @since  1.0.0
-	 * @param string $field Field to get.
+	 * @since 1.0.0
+	 *
 	 * @throws Exception Throws an exception if the field is invalid.
+	 *
+	 * @param string $field Field to get.
 	 * @return mixed
 	 */
 	public function __get( $field ) {
@@ -338,11 +334,12 @@ class BP_Extender {
 	}
 
 	/**
-	 * Include a file from the includes directory
+	 * Include a file from the includes directory.
 	 *
-	 * @since  1.0.0
-	 * @param  string $filename Name of the file to be included.
-	 * @return bool   Result of include call.
+	 * @since 1.0.0
+	 *
+	 * @param string $filename Name of the file to be included.
+	 * @return bool Result of include call.
 	 */
 	public static function include_file( $filename ) {
 		$file = self::dir( 'classes/class-'. $filename .'.php' );
@@ -353,11 +350,12 @@ class BP_Extender {
 	}
 
 	/**
-	 * This plugin's directory
+	 * This plugin's directory.
 	 *
-	 * @since  1.0.0
-	 * @param  string $path (optional) appended path.
-	 * @return string	   Directory and path
+	 * @since 1.0.0
+	 *
+	 * @param string $path (optional) appended path.
+	 * @return string Directory and path.
 	 */
 	public static function dir( $path = '' ) {
 		static $dir;
@@ -366,11 +364,12 @@ class BP_Extender {
 	}
 
 	/**
-	 * This plugin's url
+	 * This plugin's url.
 	 *
-	 * @since  1.0.0
-	 * @param  string $path (optional) appended path.
-	 * @return string	   URL and path
+	 * @since 1.0.0
+	 *
+	 * @param string $path (optional) appended path.
+	 * @return string URL and path.
 	 */
 	public static function url( $path = '' ) {
 		static $url;
@@ -381,9 +380,11 @@ class BP_Extender {
 
 /**
  * Grab the BP_Extender object and return it.
- * Wrapper for BP_Extender::get_instance()
  *
- * @since  1.0.0
+ * Wrapper for BP_Extender::get_instance().
+ *
+ * @since 1.0.0
+ *
  * @return BP_Extender Singleton instance of plugin class.
  */
 function bpextender() {
@@ -397,11 +398,11 @@ register_activation_hook( __FILE__, array( bpextender(), '_activate' ) );
 register_deactivation_hook( __FILE__, array( bpextender(), '_deactivate' ) );
 
 /**
- * Bpext_run_extended_settings loads
+ * Bpext_run_extended_settings loads.
  *
- * BP defines hooked to plugins loaded before BP
+ * BP defines hooked to plugins loaded before BP.
  *
- * @return void
+ * @since 1.0.0
  */
 function bpext_run_extended_settings() {
 
@@ -487,9 +488,9 @@ add_action( 'init', 'bpext_run_extended_settings' );
 /**
  * Bpext_run_bp_included_settings loads
  *
- * BP filter/action hooked to bp include
+ * BP filter/action hooked to bp include.
  *
- * @return void
+ * @since 1.0.0
  */
 function bpext_run_bp_included_settings() {
 
@@ -514,18 +515,18 @@ function bpext_run_bp_included_settings() {
 add_action( 'bp_include', 'bpext_run_bp_included_settings' );
 
 /**
- * Bpext_remove_xprofile_links
+ * Bpext_remove_xprofile_links.
  *
- * @return void
+ * @since 1.0.0
  */
 function bpext_remove_xprofile_links() {
 	remove_filter( 'bp_get_the_profile_field_value', 'xprofile_filter_link_profile_data', 9, 2 );
 }
 
 /**
- * Bpext_remove_user_mentions
+ * Bpext_remove_user_mentions.
  *
- * @return void
+ * @since 1.0.0
  */
 function bpext_remove_user_mentions() {
 	add_filter( 'bp_activity_do_mentions', '__return_false' );

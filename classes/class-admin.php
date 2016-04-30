@@ -8,45 +8,53 @@
  * @since 1.0.0
  */
 
+/**
+ * Class BPExtender_Admin
+ */
 class BPExtender_Admin {
 
 	/**
-	 * Option key, and option page slug
+	 * Option key, and option page slug.
 	 *
+	 * @since 1.0.0
 	 * @var string
 	 */
 	private $key = 'bpext_options';
 
 	/**
-	 * Options page metabox id
+	 * Options page metabox id.
 	 *
+	 * @since 1.0.0
 	 * @var string
 	 */
 	private $metabox_id = 'bbpext_option_metabox';
 
 	/**
-	 * Options Page title
+	 * Options Page title.
 	 *
+	 * @since 1.0.0
 	 * @var string
 	 */
 	protected $title = '';
 
 	/**
-	 * Options Page hook
+	 * Options Page hook.
 	 *
+	 * @since 1.0.0
 	 * @var string
 	 */
 	protected $options_page = '';
 
 	/**
-	 * Holds an instance of the object
+	 * Holds an instance of the object.
 	 *
-	 * @var bpext_Admin
-	 **/
+	 * @since 1.0.0
+	 * @var BPExtender_Admin
+	 */
 	private static $instance = null;
 
 	/**
-	 * Constructor
+	 * Constructor.
 	 *
 	 * @since 1.0.0
 	 */
@@ -58,8 +66,10 @@ class BPExtender_Admin {
 	/**
 	 * Returns the running object
 	 *
-	 * @return bpext_Admin
-	 **/
+	 * @since 1.0.0
+	 *
+	 * @return BPExtender_Admin
+	 */
 	public static function get_instance() {
 		if ( is_null( self::$instance ) ) {
 			self::$instance = new BPExtender_Admin();
@@ -69,7 +79,7 @@ class BPExtender_Admin {
 	}
 
 	/**
-	 * Initiate our hooks
+	 * Initiate our hooks.
 	 *
 	 * @since 1.0.0
 	 */
@@ -81,20 +91,18 @@ class BPExtender_Admin {
 
 
 	/**
-	 * Register our setting to WP
+	 * Register our setting to WP.
 	 *
-	 * @since	1.0.0
-	 * @return void
+	 * @since 1.0.0
 	 */
 	public function init() {
 		register_setting( $this->key, $this->key );
 	}
 
 	/**
-	 * Add menu options page
+	 * Add menu options page.
 	 *
 	 * @since 1.0.0
-	 * @return void
 	 */
 	public function add_options_page() {
 
@@ -112,10 +120,9 @@ class BPExtender_Admin {
 	}
 
 	/**
-	 * Admin page markup. Mostly handled by CMB2
+	 * Admin page markup. Mostly handled by CMB2.
 	 *
-	 * @since	1.0.0
-	 * @return void
+	 * @since 1.0.0
 	 */
 	public function admin_page_display() {
 		wp_enqueue_style( 'ad-sidebar' );
@@ -133,10 +140,9 @@ class BPExtender_Admin {
 	}
 
 	/**
-	 * Add the options metabox to the array of metaboxes
+	 * Add the options metabox to the array of metaboxes.
 	 *
-	 * @since	1.0.0
-	 * @return void
+	 * @since 1.0.0
 	 */
 	function add_options_page_metabox() {
 
@@ -312,12 +318,12 @@ class BPExtender_Admin {
 	}
 
 	/**
-	 * Register settings notices for display
+	 * Register settings notices for display.
 	 *
 	 * @since 1.0.0
+	 *
 	 * @param int   $object_id Option key.
 	 * @param array $updated Array of updated fields.
-	 * @return void
 	 */
 	public function settings_notices( $object_id, $updated ) {
 		if ( $object_id !== $this->key || empty( $updated ) ) {
@@ -329,9 +335,12 @@ class BPExtender_Admin {
 	}
 
 	/**
-	 * Public getter method for retrieving protected/private variables
+	 * Public getter method for retrieving protected/private variables.
 	 *
 	 * @since 1.0.0
+	 *
+	 * @throws Exception Throws an exception if the field is invalid.
+	 *
 	 * @param string $field Field to retrieve.
 	 * @return mixed Field value or exception is thrown.
 	 */
@@ -346,21 +355,22 @@ class BPExtender_Admin {
 }
 
 /**
- * Helper function to get/return the BPExtender_Admin object
+ * Helper function to get/return the BPExtender_Admin object.
  *
- * @since	1.0.0
- * @return bpext_Admin object
+ * @since 1.0.0
+ * @return BPExtender_Admin object.
  */
 function bpext_admin() {
 	return BPExtender_Admin::get_instance();
 }
 
 /**
- * Wrapper function around cmb2_get_option
+ * Wrapper function around cmb2_get_option.
  *
- * @since	1.0.0
- * @param	string $key Options array key.
- * @return mixed Option value
+ * @since 1.0.0
+ *
+ * @param string $key Options array key.
+ * @return mixed Option value.
  */
 function bpext_get_option( $key = '' ) {
 	return cmb2_get_option( bpext_admin()->key, $key );
@@ -370,9 +380,10 @@ function bpext_get_option( $key = '' ) {
 bpext_admin();
 
 /**
- * Returns various select options for avatar sizes
+ * Returns various select options for avatar sizes.
  *
- * @since	1.0.0
+ * @since 1.0.0
+ *
  * @param object $field cmb2 filed data.
  * @return array
  */
@@ -398,6 +409,13 @@ function bpext_get_avatar_sizes( $field ) {
 					'300'	=> __( '300 x 300 px', 'bpext' ),
 			);
 
+			/**
+			 * Filters the avatar_thumb_sizes select values.
+			 *
+			 * @since 1.0.0
+			 *
+			 * @param array $sizes Array of sizes to display in select field.
+			 */
 			return apply_filters( 'get_avatar_thumb_sizes', $sizes );
 
 		break;
@@ -418,6 +436,13 @@ function bpext_get_avatar_sizes( $field ) {
 					'375'	=> __( '375 x 375 px', 'bpext' ),
 			);
 
+			/**
+			 * Filters the avatar_full_sizes select values.
+			 *
+			 * @since 1.0.0
+			 *
+			 * @param array $sizes Array of sizes to display in select field.
+			 */
 			return apply_filters( 'get_avatar_full_sizes', $sizes );
 
 		break;
@@ -430,6 +455,13 @@ function bpext_get_avatar_sizes( $field ) {
 					'1280'	=> __( '1280 px', 'bpext' ),
 			);
 
+			/**
+			 * Filters the max_full_sizes select values.
+			 *
+			 * @since 1.0.0
+			 *
+			 * @param array $sizes Array of sizes to display in select field.
+			 */
 			return apply_filters( 'get_max_full_sizes', $sizes );
 
 		break;
@@ -439,10 +471,11 @@ function bpext_get_avatar_sizes( $field ) {
 }
 
 /**
- * Checks for valid email and signs user to newsletter
+ * Checks for valid email and signs user to newsletter.
  *
- * @since	1.0.0
- * @param  sting $email Email.
+ * @since 1.0.0
+ *
+ * @param sting $email Email.
  * @return boolean
  */
 function bpext_newsletter_signup( $email ) {

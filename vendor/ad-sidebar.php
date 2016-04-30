@@ -1,5 +1,14 @@
 <?php
 /**
+ * BuddyExtender products sidebar.
+ *
+ * @package    BuddyExtender
+ * @subpackage ProductSidebar
+ * @author     WebDevStudios
+ * @since      1.0.0
+ */
+
+/**
  * Displays WebDevStudios products in a sidebar on the add/edit screens for post types and taxonomies.
  *
  * We hope you don't mind.
