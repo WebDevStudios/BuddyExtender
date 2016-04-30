@@ -47,7 +47,7 @@ class BuddyExtender_Admin {
 
 	/**
 	 * Holds an instance of the object.
-
+	 *
 	 * @since 1.0.0
 	 * @var BuddyExtender_Admin
 	 */
