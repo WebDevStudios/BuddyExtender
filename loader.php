@@ -12,7 +12,7 @@
  * Plugin Name: BuddyExtender
  * Plugin URI:  http://pluginize.com
  * Description: Extend BuddyPress with extra settings and options.
- * Version:	 1.0.0
+ * Version:	 1.0.1
  * Author:	  Pluginize from WebDevStudios
  * Author URI:  http://pluginize.com
  * License:	 GPLv2
@@ -78,7 +78,7 @@ class BuddyExtender {
 	 * @var  string
 	 * @since  1.0.0
 	 */
-	const VERSION = '1.0.0';
+	const VERSION = '1.0.1';
 
 	/**
 	 * URL of plugin directory
