@@ -101,8 +101,7 @@ class Helpscout_Customer_Dashboard {
 		}
 		.pluginize-shop li {
 			float: left;
-			width: 30%;
-			height:150px;
+			width: 100%;
 			margin: 0 .5em 0 0;
 		}
 		.pluginize-shop img {
@@ -150,16 +149,7 @@ class Helpscout_Customer_Dashboard {
 			<h3 class="feed-title">Pluginize Shop</h3>
 			<ul>
 			<?php
-			if( isset( $dashboard->products ) ) {
-				$products = $dashboard->products;
-				if ( ! empty( $products ) ) {
-					foreach ( $products as $product ) {
-						echo '<a class="" href="'. esc_url( $product->permalink ) .'?utm_source=pluginize&utm_medium=plugin&utm_campaign=cptui" title="'. esc_attr( $product->title ) .' product link"><li><img src="'. esc_url( $product->thumbnail ) .'"></li></a>';
-					}
-				}
-			} else {
-				_e( 'Sorry, currently no products.', 'cptuiext' );
-			}
+				echo '<a class="" href="https://pluginize.com/product/buddypages/?utm_source=dashboard-widget&utm_medium=banner&utm_campaign=buddyextender" title="link to BuddyPages product on pluginize.com"><li><img src="'. esc_url( helpscout_customer()->url ) .'assets/img/buddypages.jpg"></li></a>';
 			?>
 			</ul>
 		</div>
