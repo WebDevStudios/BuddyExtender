@@ -118,24 +118,24 @@ class Helpscout_Customer_Dashboard {
 	 */
 	public function pluginize_rest_data() {
 
-		if ( false === ( $dashboard = get_transient( 'pluginize_rest' ) ) ) {
-			$dashboard = wp_remote_get( 'https://pluginize.com/wp-json/pluginize/v1/dashboard' );
+		// Get RSS Feed(s)
+		include_once( ABSPATH . WPINC . '/feed.php' );
+		$rss = fetch_feed( 'https://pluginize.com/feed/' );
+		$maxitems = 0;
 
-			if ( 200 === wp_remote_retrieve_response_code( $dashboard ) ) {
-				$dashboard = json_decode( wp_remote_retrieve_body( $dashboard ) );
-				set_transient( 'pluginize_rest', $dashboard, DAY_IN_SECONDS );
-			}
+		if ( ! is_wp_error( $rss ) ) {
+		    $maxitems = $rss->get_item_quantity( 3 );
+		    $rss_items = $rss->get_items( 0, $maxitems );
 		}
 	?>
 		<div class="pluginize-feed">
 			<h3 class="feed-title">Pluginize News</h3>
 			<ul>
 			<?php
-			if( isset( $dashboard->posts ) ) {
-				$posts = $dashboard->posts;
-				if ( ! empty( $posts ) ) {
-					foreach ( $posts as $post ) {
-						echo '<a class="" href="'. esc_url( $post->permalink ) .'" title="'. esc_attr( $post->title ) .'"><li>'. esc_attr( $post->title ) .'</li></a>';
+			if( isset( $rss_items ) ) {
+				if ( ! empty( $rss_items ) ) {
+					foreach ( $rss_items as $item ) {
+						echo '<a class="" href="'. esc_url(  $item->get_permalink() ) .'" title="'. esc_attr( $item->get_title()) .'"><li>'. esc_attr( $item->get_title() ) .'</li></a>';
 					}
 				}
 			} else {
