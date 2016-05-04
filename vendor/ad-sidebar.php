@@ -11,31 +11,37 @@ if ( ! function_exists( 'bpextender_products_sidebar') ) {
 	 * @internal
 	 */
 	function bpextender_products_sidebar() {
-		if ( false === ( $ads = get_transient( 'pluginize_promos' ) ) ) {
-			$ads = wp_remote_get( 'https://pluginize.com/assets/json/sidebar.json' );
 
-			if ( 200 === wp_remote_retrieve_response_code( $ads ) ) {
-				$ads = json_decode( wp_remote_retrieve_body( $ads ) );
-				set_transient( 'pluginize_promos', $ads, DAY_IN_SECONDS );
-			}
-		}
+		$ads = array(
+			 array(
+				'image' => buddyextender()->url() . 'assets/images/buddypages.jpg',
+				'url' => 'https://pluginize.com/product/buddypages/?utm_source=sidebar-buddypages&utm_medium=banner&utm_campaign=buddyextender',
+				'text' => 'BuddyPages product ad',
+			),
+			array(
+			   'image' => buddyextender()->url() . 'assets/images/apppresser.png',
+			   'url' => 'https://apppresser.com/?utm_source=pluginize&utm_medium=plugin&utm_campaign=buddyextender',
+			   'text' => 'AppPresser product ad',
+		   ),
+		   array(
+			  'image' => buddyextender()->url() . 'assets/images/maintainn.png',
+			  'url' => 'https://maintainn.com/?utm_source=settings-sidebar&utm_medium=banner&utm_campaign=buddyextender',
+			  'text' => 'Maintainn product ad',
+		  ),
+		);
 
 		if ( ! empty( $ads ) ) {
 			echo '<div class="pluginizepromos">';
-			foreach ( $ads->buddyextender->sidebar as $ad ) {
-				$the_ad = $ad->text;
-				$image = wp_remote_get( $ad->image );
-				if ( 200 === wp_remote_retrieve_response_code( $image ) ) {
-					$the_ad = sprintf(
-						'<img src="%s" alt="%s">',
-						$ad->image,
-						$ad->text
-					);
-				}
+			foreach ( $ads as $ad ) {
+				$the_ad = sprintf(
+					'<img src="%s" alt="%s">',
+					$ad['image'],
+					$ad['text']
+				);
 
 				printf(
 					'<a href="%s">%s</a>',
-					$ad->url,
+					$ad['url'],
 					$the_ad
 				);
 			}
