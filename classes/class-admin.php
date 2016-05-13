@@ -65,9 +65,9 @@ class BuddyExtender_Admin {
 
 	/**
 	 * Returns the running object
-
+	 *
 	 * @since 1.0.0
-
+	 *
 	 * @return BuddyExtender_Admin
 	 */
 	public static function get_instance() {
