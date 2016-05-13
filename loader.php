@@ -10,7 +10,7 @@
 
 /**
  * Plugin Name: BuddyExtender
- * Plugin URI:  http://pluginize.com
+ * Plugin URI: http://pluginize.com
  * Description: Extend BuddyPress with extra settings and options.
  * Version:	 1.0.1
  * Author:	  Pluginize from WebDevStudios
@@ -40,11 +40,11 @@
 
 
 /**
- * Autoloads files with classes when needed
+ * Autoloads files with classes when needed.
  *
- * @since  1.0.0
- * @param  string $class_name Name of the class being requested.
- * @return void
+ * @since 1.0.0
+ *
+ * @param string $class_name Name of the class being requested.
  */
 function bpextender_autoload_classes( $class_name ) {
 
@@ -62,61 +62,63 @@ function bpextender_autoload_classes( $class_name ) {
 spl_autoload_register( 'bpextender_autoload_classes' );
 
 /**
- * Main initiation class
+ * Main initiation class.
  *
- * @since  1.0.0
- * @var  string $version  Plugin version
- * @var  string $basename Plugin basename
- * @var  string $url	  Plugin URL
- * @var  string $path	 Plugin Path
+ * @since 1.0.0
+ *
+ * @var string $version  Plugin version.
+ * @var string $basename Plugin basename.
+ * @var string $url      Plugin URL.
+ * @var string $path     Plugin Path.
  */
 class BuddyExtender {
 
 	/**
-	 * Current version
+	 * Current version.
 	 *
-	 * @var  string
-	 * @since  1.0.0
+	 * @since 1.0.0
+	 * @var string
 	 */
 	const VERSION = '1.0.1';
 
 	/**
-	 * URL of plugin directory
+	 * URL of plugin directory.
 	 *
+	 * @since 1.0.0
 	 * @var string
-	 * @since  1.0.0
 	 */
 	protected $url = '';
 
 	/**
-	 * Path of plugin directory
+	 * Path of plugin directory.
 	 *
+	 * @since 1.0.0
 	 * @var string
-	 * @since  1.0.0
 	 */
 	protected $path = '';
 
 	/**
-	 * Plugin basename
+	 * Plugin basename.
 	 *
+	 * @since 1.0.0
 	 * @var string
-	 * @since  1.0.0
 	 */
 	protected $basename = '';
 
 	/**
-	 * Singleton instance of plugin
+	 * Singleton instance of plugin.
 	 *
-	 * @var BPExtender
-	 * @since  1.0.0
+	 * @since 1.0.0
+	 * @var BP_Extender
 	 */
 	protected static $single_instance = null;
 
 	/**
 	 * Creates or returns an instance of this class.
 	 *
-	 * @since  1.0.0
-	 * @return BPExtender A single instance of this class.
+	 * @since 1.0.0
+	 *
+	 * @return BP_Extender A single instance of this class.
 	 */
 	public static function get_instance() {
 		if ( null === self::$single_instance ) {
@@ -127,9 +129,9 @@ class BuddyExtender {
 	}
 
 	/**
-	 * Sets up our plugin
+	 * Sets up our plugin.
 	 *
-	 * @since  1.0.0
+	 * @since 1.0.0
 	 */
 	protected function __construct() {
 		$this->basename = plugin_basename( __FILE__ );
@@ -142,18 +144,16 @@ class BuddyExtender {
 	/**
 	 * Attach other plugin classes to the base plugin class.
 	 *
-	 * @since  1.0.0
-	 * @return void
+	 * @since 1.0.0
 	 */
 	public function plugin_classes() {
 
 	} // END OF PLUGIN CLASSES FUNCTION
 
 	/**
-	 * Add hooks and filters
+	 * Add hooks and filters.
 	 *
-	 * @since  1.0.0
-	 * @return void
+	 * @since 1.0.0
 	 */
 	public function hooks() {
 		add_action( 'init', array( $this, 'init' ) );
@@ -164,10 +164,9 @@ class BuddyExtender {
 	}
 
 	/**
-	 * Activate the plugin
+	 * Activate the plugin.
 	 *
-	 * @since  1.0.0
-	 * @return void
+	 * @since 1.0.0
 	 */
 	function _activate() {
 		// Make sure any rewrite functionality has been loaded.
@@ -175,19 +174,18 @@ class BuddyExtender {
 	}
 
 	/**
-	 * Deactivate the plugin
-	 * Uninstall routines should be in uninstall.php
+	 * Deactivate the plugin.
 	 *
-	 * @since  1.0.0
-	 * @return void
+	 * Uninstall routines should be in uninstall.php.
+	 *
+	 * @since 1.0.0
 	 */
 	function _deactivate() {}
 
 	/**
-	 * Init hooks
+	 * Init hooks.
 	 *
-	 * @since  1.0.0
-	 * @return void
+	 * @since 1.0.0
 	 */
 	public function init() {
 		if ( $this->check_requirements() ) {
@@ -196,20 +194,18 @@ class BuddyExtender {
 	}
 
 	/**
-	 * Register scripts
+	 * Register scripts.
 	 *
-	 * @since  1.0.0
-	 * @return void
+	 * @since 1.0.0
 	 */
 	public function scripts() {
 		wp_register_style( 'ad-sidebar', $this->url . 'assets/css/style.css' );
 	}
 
 	/**
-	 * Load libraries
+	 * Load libraries.
 	 *
-	 * @since  1.0.0
-	 * @return void
+	 * @since 1.0.0
 	 */
 	public function load_libs() {
 
@@ -227,10 +223,9 @@ class BuddyExtender {
 	}
 
 	/**
-	 * Load includes
+	 * Load includes.
 	 *
-	 * @since  1.0.0
-	 * @return void
+	 * @since 1.0.0
 	 */
 	public function includes() {
 
@@ -240,10 +235,9 @@ class BuddyExtender {
 	}
 
 	/**
-	 * Includes loaded late
+	 * Includes loaded late.
 	 *
-	 * @since  1.0.0
-	 * @return void
+	 * @since 1.0.0
 	 */
 	public function late_loaded() {
 		if ( file_exists( __DIR__ . '/vendor/helpscout/helpscout-dashboard-widget.php' ) ) {
@@ -255,8 +249,9 @@ class BuddyExtender {
 	 * Check if the plugin meets requirements and
 	 * disable it if they are not present.
 	 *
-	 * @since  1.0.0
-	 * @return boolean result of meets_requirements
+	 * @since 1.0.0
+	 *
+	 * @return boolean result of meets_requirements.
 	 */
 	public function check_requirements() {
 		if ( ! $this->meets_requirements() ) {
@@ -276,8 +271,7 @@ class BuddyExtender {
 	/**
 	 * Deactivates this plugin, hook this function on admin_init.
 	 *
-	 * @since  1.0.0
-	 * @return void
+	 * @since 1.0.0
 	 */
 	public function deactivate_me() {
 
@@ -288,9 +282,10 @@ class BuddyExtender {
 	}
 
 	/**
-	 * Check that all plugin requirements are met
+	 * Check that all plugin requirements are met.
 	 *
-	 * @since  1.0.0
+	 * @since 1.0.0
+	 *
 	 * @return boolean True if requirements are met.
 	 */
 	public static function meets_requirements() {
@@ -302,10 +297,9 @@ class BuddyExtender {
 	}
 
 	/**
-	 * Adds a notice to the dashboard if the plugin requirements are not met
+	 * Adds a notice to the dashboard if the plugin requirements are not met.
 	 *
-	 * @since  1.0.0
-	 * @return void
+	 * @since 1.0.0
 	 */
 	public function requirements_not_met_notice() {
 		// Output our error.
@@ -319,9 +313,11 @@ class BuddyExtender {
 	/**
 	 * Magic getter for our object.
 	 *
-	 * @since  1.0.0
-	 * @param string $field Field to get.
+	 * @since 1.0.0
+	 *
 	 * @throws Exception Throws an exception if the field is invalid.
+	 *
+	 * @param string $field Field to get.
 	 * @return mixed
 	 */
 	public function __get( $field ) {
@@ -338,11 +334,12 @@ class BuddyExtender {
 	}
 
 	/**
-	 * Include a file from the includes directory
+	 * Include a file from the includes directory.
 	 *
-	 * @since  1.0.0
-	 * @param  string $filename Name of the file to be included.
-	 * @return bool   Result of include call.
+	 * @since 1.0.0
+	 *
+	 * @param string $filename Name of the file to be included.
+	 * @return bool Result of include call.
 	 */
 	public static function include_file( $filename ) {
 		$file = self::dir( 'classes/class-'. $filename .'.php' );
@@ -353,11 +350,12 @@ class BuddyExtender {
 	}
 
 	/**
-	 * This plugin's directory
+	 * This plugin's directory.
 	 *
-	 * @since  1.0.0
-	 * @param  string $path (optional) appended path.
-	 * @return string	   Directory and path
+	 * @since 1.0.0
+	 *
+	 * @param string $path (optional) appended path.
+	 * @return string Directory and path.
 	 */
 	public static function dir( $path = '' ) {
 		static $dir;
@@ -366,11 +364,12 @@ class BuddyExtender {
 	}
 
 	/**
-	 * This plugin's url
+	 * This plugin's url.
 	 *
-	 * @since  1.0.0
-	 * @param  string $path (optional) appended path.
-	 * @return string	   URL and path
+	 * @since 1.0.0
+	 *
+	 * @param string $path (optional) appended path.
+	 * @return string URL and path.
 	 */
 	public static function url( $path = '' ) {
 		static $url;
@@ -380,11 +379,13 @@ class BuddyExtender {
 }
 
 /**
- * Grab the BPExtender object and return it.
- * Wrapper for BPExtender::get_instance()
+ * Grab the BP_Extender object and return it.
  *
- * @since  1.0.0
- * @return BPExtender Singleton instance of plugin class.
+ * Wrapper for BP_Extender::get_instance().
+ *
+ * @since 1.0.0
+ *
+ * @return BP_Extender Singleton instance of plugin class.
  */
 function buddyextender() {
 	return BuddyExtender::get_instance();
@@ -402,7 +403,7 @@ register_deactivation_hook( __FILE__, array( buddyextender(), '_deactivate' ) );
  *
  * BuddyPress defines hooked to init before BP is loaded
  *
- * @return void
+ * @since 1.0.0
  */
 function bpextender_run_extended_settings() {
 
@@ -413,41 +414,92 @@ function bpextender_run_extended_settings() {
 	foreach ( $options as $key => $value ) {
 		switch ( $key ) {
 			case 'avatar_thumb_size_select' :
-				if ( ! defined( 'BP_AVATAR_THUMB_WIDTH' ) )
+				if ( ! defined( 'BP_AVATAR_THUMB_WIDTH' ) ) {
 					define( 'BP_AVATAR_THUMB_WIDTH', (int) $options[ $key ] );
-				if ( ! defined( 'BP_AVATAR_THUMB_HEIGHT' ) )
+				}
+				if ( ! defined( 'BP_AVATAR_THUMB_HEIGHT' ) ) {
 					define( 'BP_AVATAR_THUMB_HEIGHT', (int) $options[ $key ] );
+				}
 			break;
 			case 'avatar_full_size_select' :
-				if ( ! defined( 'BP_AVATAR_FULL_WIDTH' ) )
+				if ( ! defined( 'BP_AVATAR_FULL_WIDTH' ) ) {
 					define( 'BP_AVATAR_FULL_WIDTH', (int) $options[ $key ] );
-				if ( ! defined( 'BP_AVATAR_FULL_HEIGHT' ) )
+				}
+				if ( ! defined( 'BP_AVATAR_FULL_HEIGHT' ) ) {
 					define( 'BP_AVATAR_FULL_HEIGHT', (int) $options[ $key ] );
+				}
 			break;
 			case 'avatar_max_size_select' :
-				if ( ! defined( 'BP_AVATAR_ORIGINAL_MAX_WIDTH' ) )
+				if ( ! defined( 'BP_AVATAR_ORIGINAL_MAX_WIDTH' ) ) {
 					define( 'BP_AVATAR_ORIGINAL_MAX_WIDTH', (int) $options[ $key ] );
+				}
 			break;
 			case 'avatar_default_image' :
 				add_filter( 'bp_core_fetch_avatar_no_grav', '__return_true' );
-				if ( ! defined( 'BP_AVATAR_DEFAULT' ) )
+				if ( ! defined( 'BP_AVATAR_DEFAULT' ) ) {
 					define( 'BP_AVATAR_DEFAULT', $options[ $key ] );
-				if ( ! defined( 'BP_AVATAR_DEFAULT_THUMB' ) )
+				}
+				if ( ! defined( 'BP_AVATAR_DEFAULT_THUMB' ) ) {
 					define( 'BP_AVATAR_DEFAULT_THUMB', $options[ $key ] );
-			break;
-			case 'cover_image_checkbox' :
-				if ( 'on' === $options[ $key ] && ! defined( 'BP_DTHEME_DISABLE_CUSTOM_HEADER' ) )
-					define( 'BP_DTHEME_DISABLE_CUSTOM_HEADER', true );
-			break;
-			case 'group_auto_join_checkbox' :
-				if ( 'on' === $options[ $key ] && ! defined( 'BP_DISABLE_AUTO_GROUP_JOIN' ) )
-					define( 'BP_DISABLE_AUTO_GROUP_JOIN', true );
-			break;
-			case 'all_autocomplete_checkbox' :
-				if ( 'on' === $options[ $key ] && ! defined( 'BP_MESSAGES_AUTOCOMPLETE_ALL' ) )
-					define( 'BP_MESSAGES_AUTOCOMPLETE_ALL', true );
+				}
 			break;
 
+			// Advanced options.
+			case 'root_profiles_checkbox' :
+				if ( 'on' === $options[ $key ] && ! defined( 'BP_ENABLE_ROOT_PROFILES' ) ) {
+					define( 'BP_ENABLE_ROOT_PROFILES', true );
+				}
+			break;
+
+			case 'cover_image_checkbox' :
+				if ( 'on' === $options[ $key ] && ! defined( 'BP_DTHEME_DISABLE_CUSTOM_HEADER' ) ) {
+					define( 'BP_DTHEME_DISABLE_CUSTOM_HEADER', true );
+				}
+			break;
+			case 'group_auto_join_checkbox' :
+				if ( 'on' === $options[ $key ] && ! defined( 'BP_DISABLE_AUTO_GROUP_JOIN' ) ) {
+					define( 'BP_DISABLE_AUTO_GROUP_JOIN', true );
+				}
+			break;
+
+			case 'ldap_username_checkbox' :
+				if ( 'on' === $options[ $key ] && ! defined( 'BP_ENABLE_USERNAME_COMPATIBILITY_MODE' ) ) {
+					define( 'BP_ENABLE_USERNAME_COMPATIBILITY_MODE', true );
+				}
+			break;
+			case 'wysiwyg_editor_checkbox' :
+				if ( 'on' === $options[ $key ] ) {
+					add_filter( 'bp_xprofile_is_richtext_enabled_for_field', '__return_false' );
+				}
+			break;
+
+			case 'all_autocomplete_checkbox' :
+				if ( 'on' === $options[ $key ] && ! defined( 'BP_MESSAGES_AUTOCOMPLETE_ALL' ) ) {
+					define( 'BP_MESSAGES_AUTOCOMPLETE_ALL', true );
+				}
+			break;
+
+			case 'depricated_code_checkbox' :
+				if ( 'on' === $options[ $key ] && ! defined( 'BP_IGNORE_DEPRECATED' ) ) {
+					define( 'BP_IGNORE_DEPRECATED', true );
+				}
+			break;
+			// Multisite options.
+			case 'enable_multiblog_checkbox' :
+				if ( 'on' === $options[ $key ] && ! defined( 'BP_ENABLE_MULTIBLOG' ) ) {
+					define( 'BP_ENABLE_MULTIBLOG', true );
+				}
+			break;
+			case 'root_blog_select' :
+					add_filter( 'bp_get_root_blog_id', function( $root_blog ) {
+						$options = get_option( 'bpext_options' );
+						if ( isset( $options['root_blog_select'] ) ) {
+							return $options['root_blog_select'];
+
+						}
+						return $root_blog;
+					});
+			break;
 		}
 	}
 
@@ -457,7 +509,9 @@ add_action( 'init', 'bpextender_run_extended_settings' );
 /**
  * Returns root blog id on wpmu
  *
- * @param  integer $root_blog blog id.
+ * @since 1.0.0
+ *
+ * @param integer $root_blog blog id.
  * @return integer blog id
  */
 function bpextender_filter_root_blog_id( $root_blog ) {
@@ -471,7 +525,7 @@ function bpextender_filter_root_blog_id( $root_blog ) {
 /**
  * Runs BP configuration filters on bp_include
  *
- * @return void
+ * @since 1.0.0
  */
 function bpextender_run_bp_included_settings() {
 
@@ -482,40 +536,74 @@ function bpextender_run_bp_included_settings() {
 	foreach ( $options as $key => $value ) {
 		switch ( $key ) {
 			case 'profile_autolink_checkbox' :
-				if ( 'on' === $options[ $key ] )
+				if ( 'on' === $options[ $key ] ) {
 					remove_filter( 'bp_get_the_profile_field_value', 'xprofile_filter_link_profile_data', 9, 2 );
+				}
 			break;
 			case 'user_mentions_checkbox' :
-				if ( 'on' === $options[ $key ] )
+				if ( 'on' === $options[ $key ] ) {
 					add_filter( 'bp_activity_do_mentions', '__return_false' );
 					add_filter( 'bp_activity_maybe_load_mentions_scripts', '__return_false' );
+				}
 			break;
 			case 'root_profiles_checkbox' :
-				if ( 'on' === $options[ $key ] )
+				if ( 'on' === $options[ $key ] ) {
 					add_filter( 'bp_core_enable_root_profiles', '__return_true' );
+				}
 			break;
 			case 'ldap_username_checkbox' :
-				if ( 'on' === $options[ $key ] )
+				if ( 'on' === $options[ $key ] ) {
 					add_filter( 'bp_is_username_compatibility_mode', '__return_true' );
+				}
 			break;
 			case 'wysiwyg_editor_checkbox' :
-				if ( 'on' === $options[ $key ] )
+				if ( 'on' === $options[ $key ] ) {
 					add_filter( 'bp_xprofile_is_richtext_enabled_for_field', '__return_false' );
+				}
 			break;
 			case 'depricated_code_checkbox' :
-				if ( 'on' === $options[ $key ] )
+				if ( 'on' === $options[ $key ] ) {
 					add_filter( 'bp_ignore_deprecated', '__return_true' );
+				}
 			break;
 			// Multisite options.
 			case 'enable_multiblog_checkbox' :
-				if ( 'on' === $options[ $key ] )
+				if ( 'on' === $options[ $key ] ) {
 					add_filter( 'bp_is_multiblog_mode', '__return_true' );
+				}
 			break;
 			case 'root_blog_select' :
+				if ( 'on' === $options[ $key ] ) {
 					add_filter( 'bp_get_root_blog_id', 'bpextender_filter_root_blog_id' );
+					add_action( 'bp_init', 'bpext_remove_xprofile_links' );
+				}
+			break;
+			case 'user_mentions_checkbox' :
+				if ( 'on' === $options[ $key ] ) {
+					add_action( 'bp_init', 'bpext_remove_user_mentions' );
+				}
 			break;
 		}
 	}
 
 }
 add_action( 'bp_include', 'bpextender_run_bp_included_settings' );
+
+/**
+ * Bpext_remove_xprofile_links.
+ *
+ * @since 1.0.0
+ */
+function bpext_remove_xprofile_links() {
+	remove_filter( 'bp_get_the_profile_field_value', 'xprofile_filter_link_profile_data', 9 );
+}
+
+/**
+ * Bpext_remove_user_mentions.
+ *
+ * @since 1.0.0
+ */
+function bpext_remove_user_mentions() {
+	add_filter( 'bp_activity_do_mentions', '__return_false' );
+	add_filter( 'bp_activity_maybe_load_mentions_scripts', '__return_false' );
+}

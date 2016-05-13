@@ -1,9 +1,17 @@
 <?php
-if ( ! function_exists( 'bpextender_products_sidebar') ) {
+/**
+ * Displays WebDevStudios products in a sidebar on the add/edit screens for post types and taxonomies.
+ *
+ * @package    BuddyExtender
+ * @subpackage ProductSidebar
+ * @author     WebDevStudios
+ * @since      1.0.0
+ */
+
+if ( ! function_exists( 'bpextender_products_sidebar' ) ) {
 
 	/**
-	 * Displays WebDevStudios products in a sidebar.
-	 *
+	 * Displays WebDevStudios products in a sidebar on the add/edit screens for post types and taxonomies.
 	 * We hope you don't mind.
 	 *
 	 * @since 1.0.0
