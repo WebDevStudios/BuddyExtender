@@ -444,13 +444,6 @@ function bpextender_run_extended_settings() {
 				}
 			break;
 
-			// Advanced options.
-			case 'root_profiles_checkbox' :
-				if ( 'on' === $options[ $key ] && ! defined( 'BP_ENABLE_ROOT_PROFILES' ) ) {
-					define( 'BP_ENABLE_ROOT_PROFILES', true );
-				}
-			break;
-
 			case 'cover_image_checkbox' :
 				if ( 'on' === $options[ $key ] && ! defined( 'BP_DTHEME_DISABLE_CUSTOM_HEADER' ) ) {
 					define( 'BP_DTHEME_DISABLE_CUSTOM_HEADER', true );
@@ -462,43 +455,10 @@ function bpextender_run_extended_settings() {
 				}
 			break;
 
-			case 'ldap_username_checkbox' :
-				if ( 'on' === $options[ $key ] && ! defined( 'BP_ENABLE_USERNAME_COMPATIBILITY_MODE' ) ) {
-					define( 'BP_ENABLE_USERNAME_COMPATIBILITY_MODE', true );
-				}
-			break;
-			case 'wysiwyg_editor_checkbox' :
-				if ( 'on' === $options[ $key ] ) {
-					add_filter( 'bp_xprofile_is_richtext_enabled_for_field', '__return_false' );
-				}
-			break;
-
 			case 'all_autocomplete_checkbox' :
 				if ( 'on' === $options[ $key ] && ! defined( 'BP_MESSAGES_AUTOCOMPLETE_ALL' ) ) {
 					define( 'BP_MESSAGES_AUTOCOMPLETE_ALL', true );
 				}
-			break;
-
-			case 'depricated_code_checkbox' :
-				if ( 'on' === $options[ $key ] && ! defined( 'BP_IGNORE_DEPRECATED' ) ) {
-					define( 'BP_IGNORE_DEPRECATED', true );
-				}
-			break;
-			// Multisite options.
-			case 'enable_multiblog_checkbox' :
-				if ( 'on' === $options[ $key ] && ! defined( 'BP_ENABLE_MULTIBLOG' ) ) {
-					define( 'BP_ENABLE_MULTIBLOG', true );
-				}
-			break;
-			case 'root_blog_select' :
-					add_filter( 'bp_get_root_blog_id', function( $root_blog ) {
-						$options = get_option( 'bpext_options' );
-						if ( isset( $options['root_blog_select'] ) ) {
-							return $options['root_blog_select'];
-
-						}
-						return $root_blog;
-					});
 			break;
 		}
 	}
@@ -573,37 +533,10 @@ function bpextender_run_bp_included_settings() {
 				}
 			break;
 			case 'root_blog_select' :
-				if ( 'on' === $options[ $key ] ) {
-					add_filter( 'bp_get_root_blog_id', 'bpextender_filter_root_blog_id' );
-					add_action( 'bp_init', 'bpext_remove_xprofile_links' );
-				}
-			break;
-			case 'user_mentions_checkbox' :
-				if ( 'on' === $options[ $key ] ) {
-					add_action( 'bp_init', 'bpext_remove_user_mentions' );
-				}
+				add_filter( 'bp_get_root_blog_id', 'bpextender_filter_root_blog_id' );
 			break;
 		}
 	}
 
 }
 add_action( 'bp_include', 'bpextender_run_bp_included_settings' );
-
-/**
- * Bpext_remove_xprofile_links.
- *
- * @since 1.0.0
- */
-function bpext_remove_xprofile_links() {
-	remove_filter( 'bp_get_the_profile_field_value', 'xprofile_filter_link_profile_data', 9 );
-}
-
-/**
- * Bpext_remove_user_mentions.
- *
- * @since 1.0.0
- */
-function bpext_remove_user_mentions() {
-	add_filter( 'bp_activity_do_mentions', '__return_false' );
-	add_filter( 'bp_activity_maybe_load_mentions_scripts', '__return_false' );
-}
