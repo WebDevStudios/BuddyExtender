@@ -1,5 +1,5 @@
 === BuddyExtender ===
-Contributors:      pluginize, WebDevStudios, modemlooper, vegasgeek, tw2113
+Contributors:      pluginize, webdevstudios, modemlooper, vegasgeek, tw2113
 Tags:              BuddyPress, settings
 Requires at least: 3.9
 Tested up to:      4.6
