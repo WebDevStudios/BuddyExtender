@@ -20,6 +20,6 @@
   },
   "homepage": "https://github.com/WebDevStudios/BuddyExtender#readme",
   "dependencies": {
-    "wdsppf": "git+https://github.com/WebDevStudios/WDS-Product-Plugin-Framework.git"
+    "wdsppf": "git+ssh://git@github.com/WebDevStudios/WDS-Product-Plugin-Framework.git"
   }
 }
