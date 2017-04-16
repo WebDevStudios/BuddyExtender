@@ -365,7 +365,6 @@ function buddyextender() {
 add_action( 'plugins_loaded', array( buddyextender(), 'hooks' ) );
 
 register_activation_hook( __FILE__, array( buddyextender(), '_activate' ) );
-register_deactivation_hook( __FILE__, array( buddyextender(), '_deactivate' ) );
 
 /**
  * Sets BuddyPress defines. The BP_ prefix are from internal BuddyPress defines.
