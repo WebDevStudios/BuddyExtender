@@ -355,7 +355,7 @@ class BuddyExtender {
  *
  * @since 1.0.0
  *
- * @return BP_Extender Singleton instance of plugin class.
+ * @return BuddyExtender Singleton instance of plugin class.
  */
 function buddyextender() {
 	return BuddyExtender::get_instance();
