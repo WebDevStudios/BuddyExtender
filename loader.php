@@ -436,7 +436,7 @@ function bpextender_run_extended_settings() {
 add_action( 'init', 'bpextender_run_extended_settings' );
 
 /**
- * Returns root blog id on wpmu
+ * Returns root blog id on wpmu.
  *
  * @since 1.0.0
  *
@@ -452,7 +452,7 @@ function bpextender_filter_root_blog_id( $root_blog ) {
 }
 
 /**
- * Runs BP configuration filters on bp_include
+ * Runs BP configuration filters on bp_include.
  *
  * @since 1.0.0
  */
