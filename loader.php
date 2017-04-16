@@ -135,20 +135,9 @@ class BuddyExtender {
 	 */
 	protected function __construct() {
 		$this->basename = plugin_basename( __FILE__ );
-		$this->url	  = plugin_dir_url( __FILE__ );
-		$this->path	 = plugin_dir_path( __FILE__ );
-
-		$this->plugin_classes();
+		$this->url      = plugin_dir_url( __FILE__ );
+		$this->path     = plugin_dir_path( __FILE__ );
 	}
-
-	/**
-	 * Attach other plugin classes to the base plugin class.
-	 *
-	 * @since 1.0.0
-	 */
-	public function plugin_classes() {
-
-	} // END OF PLUGIN CLASSES FUNCTION
 
 	/**
 	 * Add hooks and filters.
