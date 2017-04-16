@@ -364,7 +364,7 @@ class BuddyExtender_Admin {
  *
  * @since 1.0.0
  *
- * @return BPExtender_Admin object.
+ * @return BuddyExtender_Admin object.
  */
 function buddyextender_admin() {
 	return BuddyExtender_Admin::get_instance();
