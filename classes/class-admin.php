@@ -132,7 +132,6 @@ class BuddyExtender_Admin {
 			<div id="options-wrap">
 				<?php bpextender_products_sidebar(); ?>
 				<?php cmb2_metabox_form( $this->metabox_id, $this->key ); ?>
-
 			</div>
 		</div>
 		<?php
