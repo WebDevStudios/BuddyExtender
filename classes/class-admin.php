@@ -19,7 +19,7 @@ class BuddyExtender_Admin {
 	 * @since 1.0.0
 	 * @var string
 	 */
-	private $key = 'bpext_options';
+	public $key = 'bpext_options';
 
 	/**
 	 * Options page metabox id.
@@ -58,7 +58,7 @@ class BuddyExtender_Admin {
 	 *
 	 * @since 1.0.0
 	 */
-	private function __construct() {
+	public function __construct() {
 		// Set our title.
 		$this->title = __( 'BuddyExtender', 'bpextended' );
 	}
