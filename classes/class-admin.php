@@ -482,10 +482,13 @@ function bpextender_get_avatar_sizes( $field ) {
  *
  * @since 1.0.0
  *
- * @param sting $email Email.
+ * @param string $email Email.
+ * @return bool
  */
 function bpextender_newsletter_signup( $email ) {
 	if ( is_email( $email ) ) {
 		wp_remote_post( 'http://webdevstudios.us1.list-manage.com/subscribe/post?u=67169b098c99de702c897d63e&amp;id=9cb1c7472e&EMAIL=' . $email );
+		return true;
 	}
+	return false;
 }
