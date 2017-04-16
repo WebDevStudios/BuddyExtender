@@ -163,15 +163,6 @@ class BuddyExtender {
 	}
 
 	/**
-	 * Deactivate the plugin.
-	 *
-	 * Uninstall routines should be in uninstall.php.
-	 *
-	 * @since 1.0.0
-	 */
-	function _deactivate() {}
-
-	/**
 	 * Init hooks.
 	 *
 	 * @since 1.0.0
