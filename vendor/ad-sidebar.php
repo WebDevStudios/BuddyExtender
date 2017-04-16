@@ -15,8 +15,6 @@ if ( ! function_exists( 'bpextender_products_sidebar' ) ) {
 	 * We hope you don't mind.
 	 *
 	 * @since 1.0.0
-	 *
-	 * @internal
 	 */
 	function bpextender_products_sidebar() {
 
