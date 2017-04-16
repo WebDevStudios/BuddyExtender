@@ -263,10 +263,7 @@ class BuddyExtender {
 	 */
 	public static function meets_requirements() {
 		// We have met all requirements.
-		if ( ! class_exists( 'BuddyPress' ) ) {
-			return false;
-		}
-		return true;
+		return class_exists( 'BuddyPress' );
 	}
 
 	/**
