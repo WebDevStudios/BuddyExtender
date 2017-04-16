@@ -218,14 +218,13 @@ class BuddyExtender {
 	 * @since 1.0.0
 	 */
 	public function late_loaded() {
-		if ( file_exists( __DIR__ . '/vendor/helpscout/helpscout-dashboard-widget.php' ) ) {
+		if ( ! class_exists( 'Helpscout_Customer' ) ) {
 			require_once  __DIR__ . '/vendor/helpscout/helpscout-dashboard-widget.php';
 		}
 	}
 
 	/**
-	 * Check if the plugin meets requirements and
-	 * disable it if they are not present.
+	 * Check if the plugin meets requirements and disable it if they are not present.
 	 *
 	 * @since 1.0.0
 	 *
