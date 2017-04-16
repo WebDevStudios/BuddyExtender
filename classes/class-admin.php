@@ -474,6 +474,7 @@ function bpextender_get_avatar_sizes( $field ) {
 
 	}
 
+	return array();
 }
 
 /**
