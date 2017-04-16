@@ -109,7 +109,7 @@ class BuddyExtender {
 	 * Singleton instance of plugin.
 	 *
 	 * @since 1.0.0
-	 * @var BP_Extender
+	 * @var BuddyExtender
 	 */
 	protected static $single_instance = null;
 
@@ -118,7 +118,7 @@ class BuddyExtender {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return BP_Extender A single instance of this class.
+	 * @return BuddyExtender A single instance of this class.
 	 */
 	public static function get_instance() {
 		if ( null === self::$single_instance ) {
