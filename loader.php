@@ -466,7 +466,7 @@ function bpextender_run_bp_included_settings() {
 		switch ( $key ) {
 			case 'profile_autolink_checkbox' :
 				if ( 'on' === $options[ $key ] ) {
-					remove_filter( 'bp_get_the_profile_field_value', 'xprofile_filter_link_profile_data', 9, 2 );
+					remove_filter( 'bp_get_the_profile_field_value', 'xprofile_filter_link_profile_data', 9 );
 				}
 			break;
 			case 'user_mentions_checkbox' :
