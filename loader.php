@@ -251,11 +251,7 @@ class BuddyExtender {
 	 * @since 1.0.0
 	 */
 	public function deactivate_me() {
-
-		if ( is_plugin_active( $this->basename ) ) {
-			deactivate_plugins( $this->basename );
-		}
-
+		deactivate_plugins( $this->basename );
 	}
 
 	/**
