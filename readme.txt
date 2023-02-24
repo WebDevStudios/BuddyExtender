@@ -1,9 +1,9 @@
 === BuddyExtender ===
-Contributors:      pluginize, webdevstudios, modemlooper, vegasgeek, tw2113
+Contributors:      tw2113
 Tags:              BuddyPress, settings
 Requires at least: 3.9
 Tested up to:      4.7
-Stable tag:        1.0.1
+Stable tag:        1.0.2
 License:           GPLv2
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,8 +12,6 @@ Configure internal BuddyPress settings from the WordPress dashboard
 == Description ==
 
 Get BuddyPress goodness without the coding knowledge! Until now, BuddyPress has had a number of internal configuration options that were only able to be configured by updating the code itself. With BuddyExtender, users now have the power to configure those settings from the WordPress dashboard without ever laying a keystroke on code.
-
-[Pluginize](https://pluginize.com/?utm_source=buddy-extender&utm_medium=text&utm_campaign=wporg) was launched in 2016 by [WebDevStudios](https://webdevstudios.com/) to promote, support, and house all of their [WordPress products](https://pluginize.com/shop//?utm_source=buddy-extender&utm_medium=text&utm_campaign=wporg). Pluginize is dedicated to creating products that make your [BuddyPress site](https://pluginize.com/product-category/buddypress/?utm_source=buddy-extender&utm_medium=text&utm_campaign=wporg) easy to manage, without having to touch a line of code. Pluginize also provides [ongoing support and development for WordPress community favorites like CPTUI](https://wordpress.org/plugins/custom-post-type-ui/), [CMB2](https://wordpress.org/plugins/cmb2/), and more.
 
 == Installation ==
 
@@ -29,6 +27,9 @@ Get BuddyPress goodness without the coding knowledge! Until now, BuddyPress has 
 1. BuddyExtender settings page
 
 == Changelog ==
+
+= 1.0.2 =
+* Ownership transfer
 
 = 1.0.1 =
 * Code and asset optimization

@@ -10,12 +10,12 @@
 
 /**
  * Plugin Name: BuddyExtender
- * Plugin URI:  http://pluginize.com
+ * Plugin URI:  https://michaelbox.net
  * Description: Extend BuddyPress with extra settings and options.
- * Version:     1.0.1
- * Author:      Pluginize from WebDevStudios
- * Author URI:  http://pluginize.com
- * License:     GPLv2
+ * Version:	 1.0.2
+ * Author: Michael Beckwith
+ * Author URI:  https://michaelbox.net
+ * License:	 GPLv2
  * Text Domain: wds
  * Domain Path: /languages
  */
@@ -40,11 +40,11 @@
 
 
 /**
- * Autoloads files with classes when needed.
+ * Autoloads files with classes when needed
  *
- * @since 1.0.0
- *
- * @param string $class_name Name of the class being requested.
+ * @since  1.0.0
+ * @param  string $class_name Name of the class being requested.
+ * @return void
  */
 function bpextender_autoload_classes( $class_name ) {
 
