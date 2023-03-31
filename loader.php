@@ -148,7 +148,6 @@ class BuddyExtender {
 		add_action( 'init', array( $this, 'init' ) );
 		add_action( 'init', array( $this, 'load_libs' ) );
 		$this->includes();
-		add_action( 'init', array( $this, 'late_loaded' ), 999 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'scripts' ) );
 	}
 
@@ -204,17 +203,6 @@ class BuddyExtender {
 
 		if ( file_exists( __DIR__ . '/classes/class-admin.php' ) ) {
 			require_once  __DIR__ . '/classes/class-admin.php';
-		}
-	}
-
-	/**
-	 * Includes loaded late.
-	 *
-	 * @since 1.0.0
-	 */
-	public function late_loaded() {
-		if ( ! class_exists( 'Helpscout_Customer' ) ) {
-			require_once  __DIR__ . '/vendor/helpscout/helpscout-dashboard-widget.php';
 		}
 	}
 
