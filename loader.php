@@ -190,7 +190,7 @@ class BuddyExtender {
 
 		// Load cmb2.
 		if ( ! function_exists( 'cmb2_bootstrap' ) ) {
-			require_once  __DIR__ . '/vendor/CMB2/init.php';
+			require_once  __DIR__ . '/vendor/cmb2/cmb2/init.php';
 		}
 	}
 
