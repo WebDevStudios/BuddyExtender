@@ -130,7 +130,6 @@ class BuddyExtender_Admin {
 		<div class="wrap cmb2-options-page <?php echo esc_attr( $this->key ); ?>">
 			<h2><?php esc_attr_e( 'BuddyExtender', 'bpextended' ); ?></h2>
 			<div id="options-wrap">
-				<?php bpextender_products_sidebar(); ?>
 				<?php cmb2_metabox_form( $this->metabox_id, $this->key ); ?>
 			</div>
 		</div>
