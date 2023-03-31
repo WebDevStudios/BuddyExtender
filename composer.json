@@ -1,0 +1,17 @@
+{
+  "name": "tw2113/buddyextender",
+  "description": "UI for BuddyPress internal flags and constants",
+  "homepage": "https://michaelbox.net",
+  "type": "wordpress-plugin",
+  "require": {
+    "cmb2/cmb2": "v2.10.1"
+  },
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "Michael Beckwith",
+      "email": "tw2113@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev"
+}
