@@ -18,6 +18,7 @@
  * License:	 GPLv2
  * Text Domain: wds
  * Domain Path: /languages
+ * Requires PHP: 7.4
  */
 
 /**
@@ -145,10 +146,10 @@ class BuddyExtender {
 	 * @since 1.0.0
 	 */
 	public function hooks() {
-		add_action( 'init', array( $this, 'init' ) );
-		add_action( 'init', array( $this, 'load_libs' ) );
+		add_action( 'init', [ $this, 'init' ] );
+		add_action( 'init', [ $this, 'load_libs' ] );
 		$this->includes();
-		add_action( 'admin_enqueue_scripts', array( $this, 'scripts' ) );
+		add_action( 'admin_enqueue_scripts', [ $this, 'scripts' ] );
 	}
 
 	/**
@@ -217,10 +218,10 @@ class BuddyExtender {
 		if ( ! $this->meets_requirements() ) {
 
 			// Add a dashboard notice.
-			add_action( 'all_admin_notices', array( $this, 'requirements_not_met_notice' ) );
+			add_action( 'all_admin_notices', [ $this, 'requirements_not_met_notice' ] );
 
 			// Deactivate our plugin.
-			add_action( 'admin_init', array( $this, 'deactivate_me' ) );
+			add_action( 'admin_init', [ $this, 'deactivate_me' ] );
 
 			return false;
 		}
@@ -345,9 +346,9 @@ function buddyextender() {
 }
 
 // Kick it off.
-add_action( 'plugins_loaded', array( buddyextender(), 'hooks' ) );
+add_action( 'plugins_loaded', [ buddyextender(), 'hooks' ] );
 
-register_activation_hook( __FILE__, array( buddyextender(), '_activate' ) );
+register_activation_hook( __FILE__, [ buddyextender(), '_activate' ] );
 
 /**
  * Sets BuddyPress defines. The BP_ prefix are from internal BuddyPress defines.
