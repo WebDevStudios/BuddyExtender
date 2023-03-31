@@ -1,20 +1,9 @@
-.pluginizepromos {
-  float: right;
-  position: absolute;
-  right: 20px;
-  top: 150px;
-  width: 275px;
-  z-index: 999;
-}
-
 form#bbpext_option_metabox.cmb-form {
-  display: inline-block;
-  margin-right: 300px;
+	display: inline-block;
+	margin-right: 300px;
 }
 
 .cmb-th + .cmb-td {
-  float: none;
-  overflow: hidden;
+	float: none;
+	overflow: hidden;
 }
-
-/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInN0eWxlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQ0E7RUFDSSxhQUFhO0VBQ2IsbUJBQW1CO0VBQ25CLFlBQVk7RUFDWixVQUFVO0VBQ1YsYUFBYTtFQUNiLGFBQWE7Q0FDaEI7O0FBQ0Q7RUFDSSxzQkFBc0I7RUFDdEIsb0JBQW9CO0NBQ3ZCOztBQUVEO0VBQ0ksWUFBWTtFQUNaLGlCQUFpQjtDQUNwQiIsImZpbGUiOiJzdHlsZS5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIvLyBnZXQgU2Fzc3khXG4ucGx1Z2luaXplcHJvbW9zIHtcbiAgICBmbG9hdDogcmlnaHQ7XG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIHJpZ2h0OiAyMHB4O1xuICAgIHRvcDogNTBweDtcbiAgICB3aWR0aDogMjc1cHg7XG4gICAgei1pbmRleDogOTk5O1xufVxuZm9ybSNiYnBleHRfb3B0aW9uX21ldGFib3guY21iLWZvcm0ge1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgICBtYXJnaW4tcmlnaHQ6IDMwMHB4O1xufVxuXG4uY21iLXRoICsgLmNtYi10ZCB7XG4gICAgZmxvYXQ6IG5vbmU7XG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcbn1cbiJdLCJzb3VyY2VSb290IjoiL3NvdXJjZS8ifQ== */
