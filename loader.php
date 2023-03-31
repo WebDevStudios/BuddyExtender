@@ -193,11 +193,6 @@ class BuddyExtender {
 		if ( ! function_exists( 'cmb2_bootstrap' ) ) {
 			require_once  __DIR__ . '/vendor/CMB2/init.php';
 		}
-
-		if ( file_exists( __DIR__ . '/vendor/ad-sidebar.php' ) ) {
-			require_once  __DIR__ . '/vendor/ad-sidebar.php';
-		}
-
 	}
 
 	/**
