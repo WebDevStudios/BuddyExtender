@@ -2,6 +2,7 @@
 .AppleDouble
 .LSOverride
 .gitmodules
+/vendor/
 
 # Files that might appear on external disk
 .Spotlight-V100
