@@ -60,7 +60,7 @@ class BuddyExtender_Admin {
 	 */
 	public function __construct() {
 		// Set our title.
-		$this->title = __( 'BuddyExtender', 'bpextended' );
+		$this->title = esc_html__( 'BuddyExtender', 'bpextended' );
 	}
 
 	/**
