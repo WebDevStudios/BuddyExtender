@@ -360,7 +360,8 @@ register_activation_hook( __FILE__, [ buddyextender(), '_activate' ] );
  */
 function bpextender_run_extended_settings() {
 
-	if ( ! $options = get_option( 'bpext_options' ) ) {
+	$options = get_option( 'bpext_options', [] );
+	if ( empty( $options ) ) {
 		return;
 	}
 
@@ -428,7 +429,7 @@ add_action( 'init', 'bpextender_run_extended_settings' );
  * @return integer blog id
  */
 function bpextender_filter_root_blog_id( $root_blog ) {
-	$options = get_option( 'bpext_options' );
+	$options = get_option( 'bpext_options', [] );
 	if ( isset( $options['root_blog_select'] ) ) {
 		return $options['root_blog_select'];
 	}
@@ -442,7 +443,8 @@ function bpextender_filter_root_blog_id( $root_blog ) {
  */
 function bpextender_run_bp_included_settings() {
 
-	if ( ! $options = get_option( 'bpext_options' ) ) {
+	$options = get_option( 'bpext_options', [] );
+	if ( empty( $options ) ) {
 		return;
 	}
 
