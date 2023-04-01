@@ -2,8 +2,8 @@
 Contributors:      tw2113
 Tags:              BuddyPress, settings, buddypress overrides
 Requires at least: 3.9
-Tested up to:      4.7
-Stable tag:        1.0.2
+Tested up to:      6.2
+Stable tag:        1.1.0
 License:           GPLv2
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,6 +27,10 @@ Get BuddyPress goodness without the coding knowledge! Until now, BuddyPress has 
 1. BuddyExtender settings page
 
 == Changelog ==
+
+= 1.1.0 =
+* Confirmed compatibilty with WordPress 6.2 and BuddyPress 11.x
+* Code and UI cleanup to remove old ads and some past integrations.
 
 = 1.0.2 =
 * Ownership transfer
