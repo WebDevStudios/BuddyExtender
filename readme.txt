@@ -1,6 +1,6 @@
 === BuddyExtender ===
 Contributors:      tw2113
-Tags:              BuddyPress, settings
+Tags:              BuddyPress, settings, buddypress overrides
 Requires at least: 3.9
 Tested up to:      4.7
 Stable tag:        1.0.2
