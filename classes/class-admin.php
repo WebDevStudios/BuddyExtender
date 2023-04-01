@@ -60,7 +60,7 @@ class BuddyExtender_Admin {
 	 */
 	public function __construct() {
 		// Set our title.
-		$this->title = esc_html__( 'BuddyExtender', 'bpextended' );
+		$this->title = esc_html__( 'BuddyExtender', 'buddyextender' );
 	}
 
 	/**
@@ -128,7 +128,7 @@ class BuddyExtender_Admin {
 		wp_enqueue_style( 'ad-sidebar' );
 		?>
 		<div class="wrap cmb2-options-page <?php echo esc_attr( $this->key ); ?>">
-			<h2><?php esc_attr_e( 'BuddyExtender', 'bpextended' ); ?></h2>
+			<h2><?php esc_attr_e( 'BuddyExtender', 'buddyextender' ); ?></h2>
 			<div id="options-wrap">
 				<?php cmb2_metabox_form( $this->metabox_id, $this->key ); ?>
 			</div>
@@ -157,16 +157,16 @@ class BuddyExtender_Admin {
 
 		// ************* Avatar settings ***********************************************
 		$cmb->add_field( [
-			'name' => esc_html__( 'Avatar Settings', 'bpextended' ),
-			'desc' => esc_html__( 'Customize user avatar dimentions and defaults', 'bpextended' ),
+			'name' => esc_html__( 'Avatar Settings', 'buddyextender' ),
+			'desc' => esc_html__( 'Customize user avatar dimentions and defaults', 'buddyextender' ),
 			'type' => 'title',
 			'id'   => 'avatar_title',
 		] );
 
 		// Set our CMB2 fields.
 		$cmb->add_field( [
-			'name'             => esc_html__( 'Avatar Thumb Size', 'bpextended' ),
-			'desc'             => esc_html__( 'Changes user and group avatar to selected dimensions in activity, members and group lists.', 'bpextended' ),
+			'name'             => esc_html__( 'Avatar Thumb Size', 'buddyextender' ),
+			'desc'             => esc_html__( 'Changes user and group avatar to selected dimensions in activity, members and group lists.', 'buddyextender' ),
 			'id'               => 'avatar_thumb_size_select',
 			'type'             => 'select',
 			'show_option_none' => false,
@@ -175,8 +175,8 @@ class BuddyExtender_Admin {
 		] );
 
 		$cmb->add_field( [
-			'name'             => esc_html__( 'Avatar Full Size', 'bpextended' ),
-			'desc'             => esc_html__( 'Changes user and group avatar to dimensions in user and group header.', 'bpextended' ),
+			'name'             => esc_html__( 'Avatar Full Size', 'buddyextender' ),
+			'desc'             => esc_html__( 'Changes user and group avatar to dimensions in user and group header.', 'buddyextender' ),
 			'id'               => 'avatar_full_size_select',
 			'type'             => 'select',
 			'show_option_none' => false,
@@ -185,8 +185,8 @@ class BuddyExtender_Admin {
 		] );
 
 		$cmb->add_field( [
-			'name'             => esc_html__( 'Avatar Max Size', 'bpextended' ),
-			'desc'             => esc_html__( 'Changes maximum image size a user can uplaod for avatars.', 'bpextended' ),
+			'name'             => esc_html__( 'Avatar Max Size', 'buddyextender' ),
+			'desc'             => esc_html__( 'Changes maximum image size a user can uplaod for avatars.', 'buddyextender' ),
 			'id'               => 'avatar_max_size_select',
 			'type'             => 'select',
 			'show_option_none' => false,
@@ -195,8 +195,8 @@ class BuddyExtender_Admin {
 		] );
 
 		$cmb->add_field( [
-			'name'    => esc_html__( 'Default User Avatar', 'bpextended' ),
-			'desc'    => esc_html__( 'Upload an image that displays before a user has added a custom image.', 'bpextended' ),
+			'name'    => esc_html__( 'Default User Avatar', 'buddyextender' ),
+			'desc'    => esc_html__( 'Upload an image that displays before a user has added a custom image.', 'buddyextender' ),
 			'id'      => 'avatar_default_image',
 			'type'    => 'file',
 			'options' => [
@@ -207,64 +207,64 @@ class BuddyExtender_Admin {
 
 		// ************* Advanced settings ***********************************************
 		$cmb->add_field( [
-			'name' => esc_html__( 'Advanced Settings', 'bpextended' ),
-			'desc' => esc_html__( 'Internal configuration settings. Please make sure to check site after changing these options.', 'bpextended' ),
+			'name' => esc_html__( 'Advanced Settings', 'buddyextender' ),
+			'desc' => esc_html__( 'Internal configuration settings. Please make sure to check site after changing these options.', 'buddyextender' ),
 			'type' => 'title',
 			'id'   => 'advanced_title',
 		] );
 
 		$cmb->add_field( [
-			'name' => esc_html__( 'Root Profiles', 'bpextended' ),
-			'desc' => esc_html__( 'Remove members slug from profile url.', 'bpextended' ),
+			'name' => esc_html__( 'Root Profiles', 'buddyextender' ),
+			'desc' => esc_html__( 'Remove members slug from profile url.', 'buddyextender' ),
 			'id'   => 'root_profiles_checkbox',
 			'type' => 'checkbox',
 		] );
 
 		$cmb->add_field( [
-			'name' => esc_html__( 'Auto Group Join', 'bpextended' ),
-			'desc' => esc_html__( 'disable auto join when posting in a group.', 'bpextended' ),
+			'name' => esc_html__( 'Auto Group Join', 'buddyextender' ),
+			'desc' => esc_html__( 'disable auto join when posting in a group.', 'buddyextender' ),
 			'id'   => 'group_auto_join_checkbox',
 			'type' => 'checkbox',
 		] );
 
 		$cmb->add_field( [
-			'name' => esc_html__( 'LDAP Usernames', 'bpextended' ),
-			'desc' => esc_html__( 'Enable support for LDAP usernames that include dots.', 'bpextended' ),
+			'name' => esc_html__( 'LDAP Usernames', 'buddyextender' ),
+			'desc' => esc_html__( 'Enable support for LDAP usernames that include dots.', 'buddyextender' ),
 			'id'   => 'ldap_username_checkbox',
 			'type' => 'checkbox',
 		] );
 
 		$cmb->add_field( [
-			'name' => esc_html__( 'WYSIWYG Textarea', 'bpextended' ),
-			'desc' => esc_html__( 'Removes text editor from textarea profile field.', 'bpextended' ),
+			'name' => esc_html__( 'WYSIWYG Textarea', 'buddyextender' ),
+			'desc' => esc_html__( 'Removes text editor from textarea profile field.', 'buddyextender' ),
 			'id'   => 'wysiwyg_editor_checkbox',
 			'type' => 'checkbox',
 		] );
 
 		$cmb->add_field( [
-			'name' => esc_html__( 'All Members Auto Complete', 'bpextended' ),
-			'desc' => esc_html__( 'Auto-complete all members instead of just friends in messages.', 'bpextended' ),
+			'name' => esc_html__( 'All Members Auto Complete', 'buddyextender' ),
+			'desc' => esc_html__( 'Auto-complete all members instead of just friends in messages.', 'buddyextender' ),
 			'id'   => 'all_autocomplete_checkbox',
 			'type' => 'checkbox',
 		] );
 
 		$cmb->add_field( [
-			'name' => esc_html__( 'Profile Fields Auto Link', 'bpextended' ),
-			'desc' => esc_html__( 'Disable autolinking in profile fields.', 'bpextended' ),
+			'name' => esc_html__( 'Profile Fields Auto Link', 'buddyextender' ),
+			'desc' => esc_html__( 'Disable autolinking in profile fields.', 'buddyextender' ),
 			'id'   => 'profile_autolink_checkbox',
 			'type' => 'checkbox',
 		] );
 
 		$cmb->add_field( [
-			'name' => esc_html__( 'User @ Mentions', 'bpextended' ),
-			'desc' => esc_html__( 'Disable User @ mentions.', 'bpextended' ),
+			'name' => esc_html__( 'User @ Mentions', 'buddyextender' ),
+			'desc' => esc_html__( 'Disable User @ mentions.', 'buddyextender' ),
 			'id'   => 'user_mentions_checkbox',
 			'type' => 'checkbox',
 		] );
 
 		$cmb->add_field( [
-			'name' => esc_html__( 'Ignore Depricated Code', 'bpextended' ),
-			'desc' => esc_html__( 'Do not load depricated code', 'bpextended' ),
+			'name' => esc_html__( 'Ignore Depricated Code', 'buddyextender' ),
+			'desc' => esc_html__( 'Do not load depricated code', 'buddyextender' ),
 			'id'   => 'depricated_code_checkbox',
 			'type' => 'checkbox',
 		] );
@@ -273,22 +273,22 @@ class BuddyExtender_Admin {
 		if ( is_multisite() ) {
 
 			$cmb->add_field( [
-				'name' => esc_html__( 'Multisite Settings', 'bpextended' ),
-				'desc' => esc_html__( 'These options display when BuddyPress is active on multisite', 'bpextended' ),
+				'name' => esc_html__( 'Multisite Settings', 'buddyextender' ),
+				'desc' => esc_html__( 'These options display when BuddyPress is active on multisite', 'buddyextender' ),
 				'type' => 'title',
 				'id'   => 'network_title',
 			] );
 
 			$cmb->add_field( [
 				'name' => 'Enable Multiblog',
-				'desc' => esc_html__( 'Allow BuddyPress to function on multiple blogs of a WPMU installation, not just on one root blog', 'bpextended' ),
+				'desc' => esc_html__( 'Allow BuddyPress to function on multiple blogs of a WPMU installation, not just on one root blog', 'buddyextender' ),
 				'id'   => 'enable_multiblog_checkbox',
 				'type' => 'checkbox',
 			] );
 
 			$cmb->add_field( [
-				'name' => esc_html__( 'Root Blog ID', 'bpextended' ),
-				'desc' => esc_html__( 'Enter blog ID BuddyPress will run on. Default ID is 1', 'bpextended' ),
+				'name' => esc_html__( 'Root Blog ID', 'buddyextender' ),
+				'desc' => esc_html__( 'Enter blog ID BuddyPress will run on. Default ID is 1', 'buddyextender' ),
 				'id'   => 'root_blog_select',
 				'type' => 'text',
 			] );
@@ -309,7 +309,7 @@ class BuddyExtender_Admin {
 			return;
 		}
 
-		add_settings_error( $this->key . '-notices', '', esc_html__( 'Settings updated.', 'bpextended' ), 'updated' );
+		add_settings_error( $this->key . '-notices', '', esc_html__( 'Settings updated.', 'buddyextender' ), 'updated' );
 		settings_errors( $this->key . '-notices' );
 	}
 
@@ -375,18 +375,18 @@ function bpextender_get_avatar_sizes( $field ) {
 		case 'avatar_thumb_size_select' :
 
 			$sizes = [
-				'25'  => esc_html__( '25 x 25 px', 'bpextended' ),
-				'50'  => esc_html__( '50 x 50 px', 'bpextended' ),
-				'75'  => esc_html__( '75 x 75 px', 'bpextended' ),
-				'100' => esc_html__( '100 x 100 px', 'bpextended' ),
-				'125' => esc_html__( '125 x 125 px', 'bpextended' ),
-				'150' => esc_html__( '150 x 150 px', 'bpextended' ),
-				'175' => esc_html__( '175 x 175 px', 'bpextended' ),
-				'200' => esc_html__( '200 x 200 px', 'bpextended' ),
-				'225' => esc_html__( '225 x 225 px', 'bpextended' ),
-				'250' => esc_html__( '250 x 250 px', 'bpextended' ),
-				'275' => esc_html__( '275 x 275 px', 'bpextended' ),
-				'300' => esc_html__( '300 x 300 px', 'bpextended' ),
+				'25'  => esc_html__( '25 x 25 px', 'buddyextender' ),
+				'50'  => esc_html__( '50 x 50 px', 'buddyextender' ),
+				'75'  => esc_html__( '75 x 75 px', 'buddyextender' ),
+				'100' => esc_html__( '100 x 100 px', 'buddyextender' ),
+				'125' => esc_html__( '125 x 125 px', 'buddyextender' ),
+				'150' => esc_html__( '150 x 150 px', 'buddyextender' ),
+				'175' => esc_html__( '175 x 175 px', 'buddyextender' ),
+				'200' => esc_html__( '200 x 200 px', 'buddyextender' ),
+				'225' => esc_html__( '225 x 225 px', 'buddyextender' ),
+				'250' => esc_html__( '250 x 250 px', 'buddyextender' ),
+				'275' => esc_html__( '275 x 275 px', 'buddyextender' ),
+				'300' => esc_html__( '300 x 300 px', 'buddyextender' ),
 			];
 
 			/**
@@ -402,18 +402,18 @@ function bpextender_get_avatar_sizes( $field ) {
 		case 'avatar_full_size_select' :
 
 			$sizes = [
-				'100' => esc_html__( '100 x 100 px', 'bpextended' ),
-				'125' => esc_html__( '125 x 125 px', 'bpextended' ),
-				'150' => esc_html__( '150 x 150 px', 'bpextended' ),
-				'175' => esc_html__( '175 x 175 px', 'bpextended' ),
-				'200' => esc_html__( '200 x 200 px', 'bpextended' ),
-				'225' => esc_html__( '225 x 225 px', 'bpextended' ),
-				'250' => esc_html__( '250 x 250 px', 'bpextended' ),
-				'275' => esc_html__( '275 x 275 px', 'bpextended' ),
-				'300' => esc_html__( '300 x 300 px', 'bpextended' ),
-				'325' => esc_html__( '325 x 325 px', 'bpextended' ),
-				'350' => esc_html__( '350 x 350 px', 'bpextended' ),
-				'375' => esc_html__( '375 x 375 px', 'bpextended' ),
+				'100' => esc_html__( '100 x 100 px', 'buddyextender' ),
+				'125' => esc_html__( '125 x 125 px', 'buddyextender' ),
+				'150' => esc_html__( '150 x 150 px', 'buddyextender' ),
+				'175' => esc_html__( '175 x 175 px', 'buddyextender' ),
+				'200' => esc_html__( '200 x 200 px', 'buddyextender' ),
+				'225' => esc_html__( '225 x 225 px', 'buddyextender' ),
+				'250' => esc_html__( '250 x 250 px', 'buddyextender' ),
+				'275' => esc_html__( '275 x 275 px', 'buddyextender' ),
+				'300' => esc_html__( '300 x 300 px', 'buddyextender' ),
+				'325' => esc_html__( '325 x 325 px', 'buddyextender' ),
+				'350' => esc_html__( '350 x 350 px', 'buddyextender' ),
+				'375' => esc_html__( '375 x 375 px', 'buddyextender' ),
 			];
 
 			/**
@@ -429,10 +429,10 @@ function bpextender_get_avatar_sizes( $field ) {
 		case 'avatar_max_size_select' :
 
 			$sizes = [
-				'320'  => esc_html__( '320 px', 'bpextended' ),
-				'640'  => esc_html__( '640 px', 'bpextended' ),
-				'960'  => esc_html__( '960 px', 'bpextended' ),
-				'1280' => esc_html__( '1280 px', 'bpextended' ),
+				'320'  => esc_html__( '320 px', 'buddyextender' ),
+				'640'  => esc_html__( '640 px', 'buddyextender' ),
+				'960'  => esc_html__( '960 px', 'buddyextender' ),
+				'1280' => esc_html__( '1280 px', 'buddyextender' ),
 			];
 
 			/**

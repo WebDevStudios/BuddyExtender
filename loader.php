@@ -16,8 +16,7 @@
  * Author: Michael Beckwith
  * Author URI:  https://michaelbox.net
  * License:	 GPLv2
- * Text Domain: wds
- * Domain Path: /languages
+ * Text Domain: buddyextender
  * Requires PHP: 7.4
  */
 
@@ -168,9 +167,7 @@ class BuddyExtender {
 	 * @since 1.0.0
 	 */
 	public function init() {
-		if ( $this->check_requirements() ) {
-			load_plugin_textdomain( 'bpextended', false, dirname( $this->basename ) . '/languages/' );
-		}
+		load_plugin_textdomain( 'buddyextender' );
 	}
 
 	/**
@@ -257,7 +254,7 @@ class BuddyExtender {
 	 */
 	public function requirements_not_met_notice() {
 		// Output our error.
-		$error_text = sprintf( __( 'BuddyExtender is missing requirements and has been <a href="%s">deactivated</a>. Please make sure BuddyPress is installed and activated.', 'bpextended' ), admin_url( 'plugins.php' ) );
+		$error_text = sprintf( __( 'BuddyExtender is missing requirements and has been <a href="%s">deactivated</a>. Please make sure BuddyPress is installed and activated.', 'buddyextender' ), admin_url( 'plugins.php' ) );
 
 		echo '<div id="message" class="error">';
 		echo '<p>' . $error_text . '</p>';
