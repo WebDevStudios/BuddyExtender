@@ -12,7 +12,7 @@
  * Plugin Name: BuddyExtender
  * Plugin URI:  https://michaelbox.net
  * Description: Extend BuddyPress with extra settings and options.
- * Version:	 1.0.2
+ * Version:	 1.1.0
  * Author: Michael Beckwith
  * Author URI:  https://michaelbox.net
  * License:	 GPLv2
@@ -79,7 +79,7 @@ class BuddyExtender {
 	 * @since 1.0.0
 	 * @var string
 	 */
-	const VERSION = '1.0.2';
+	const VERSION = '1.1.0';
 
 	/**
 	 * URL of plugin directory.
